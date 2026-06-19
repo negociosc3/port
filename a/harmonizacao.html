@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harmonização Facial - Apta Odonto</title>
+  <meta name="description"
+    content="Harmonização facial com procedimentos estéticos premium: lentes de contato dental, toxina botulínica e preenchimento. Beleza natural com segurança." />
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #b98a18;
+      --gold-light: #e9c95c;
+      --gold-soft: #f7ead2;
+      --cream: #fffaf0;
+      --ink: #5a351d;
+      --muted: #7a5638;
+      --gold-dim: rgba(233, 201, 92, 0.26);
+      --gold-border: rgba(185, 138, 24, 0.22);
+      --card-bg: rgba(255, 255, 255, 0.76);
+      --card-shadow: 0 10px 30px rgba(59, 36, 18, 0.06);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 0% 100%, rgba(166, 115, 48, 0.24) 0%, rgba(210, 168, 86, 0.16) 26%, rgba(255, 255, 255, 0) 58%),
+        linear-gradient(45deg, #fff8ec 0%, #ffffff 45%, #fffdf9 100%);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: var(--ink);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      transition: all 0.3s ease;
+      border: none !important;
+      outline: none !important;
+    }
+
+    #navbar.navbar-fixed,
+    #navbar.navbar-fixed-forced {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      transform: none !important;
+      background: rgba(255, 255, 255, 0.92) !important;
+      background-image: none !important;
+      background-size: auto !important;
+      background-repeat: initial !important;
+      background-color: rgba(255, 255, 255, 0.92) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: none !important;
+      border-bottom: none !important;
+      box-shadow: 0 8px 30px rgba(185, 138, 24, 0.08) !important;
+    }
+
+    #navbar.navbar-hidden {
+      transform: translateY(-100%) !important;
+    }
+
+    #navbar #brand-text,
+    #navbar #mobile-menu-btn,
+    #navbar .nav-link {
+      color: #5a351d !important;
+    }
+
+    #navbar.navbar-fixed #brand-text,
+    #navbar.navbar-fixed #mobile-menu-btn,
+    #navbar.navbar-fixed .nav-link {
+      color: #5a351d !important;
+      font-weight: 500 !important;
+    }
+
+    #navbar.navbar-hidden #brand-text,
+    #navbar.navbar-hidden #mobile-menu-btn,
+    #navbar.navbar-hidden .nav-link {
+      color: #5a351d !important;
+      font-weight: 500 !important;
+    }
+
+    /* Força o fundo claro mesmo com JS aplicando estilo inline */
+    #navbar.navbar-fixed,
+    #navbar.navbar-fixed-forced {
+      background: rgba(255, 255, 255, 0.92) !important;
+      background-image: none !important;
+      background-color: rgba(255, 255, 255, 0.92) !important;
+    }
+
+    #navbar .nav-link:hover,
+    #mobile-menu a:hover {
+      color: var(--gold) !important;
+    }
+
+    #mobile-menu {
+      background: rgba(255, 255, 255, 0.96) !important;
+      border-color: rgba(185, 138, 24, 0.18) !important;
+      box-shadow: 0 18px 55px rgba(185, 138, 24, 0.14);
+    }
+
+    #mobile-menu a {
+      color: var(--ink) !important;
+    }
+
+    /* ===== HERO ===== */
+    .harm-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .harm-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .harm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--gold-border);
+      background: rgba(255, 255, 255, 0.62);
+      color: var(--gold);
+      box-shadow: 0 10px 34px rgba(185, 138, 24, 0.12);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .harm-title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin: 0 0 16px;
+      max-width: 700px;
+    }
+
+    .harm-title span {
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .harm-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin: 0 auto 48px;
+    }
+
+    .harm-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #52b856, #43a047);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: none;
+    }
+
+    .harm-cta:hover {
+      transform: scale(1.04);
+      box-shadow: none;
+    }
+
+    /* ===== DIVIDER ===== */
+    .gold-divider {
+      width: 100%;
+      height: 0;
+      display: none;
+      background: transparent;
+    }
+
+    /* ===== PROCEDIMENTOS ===== */
+    .harm-section {
+      padding: 50px 24px;
+      background: transparent;
+      position: relative;
+    }
+
+    .harm-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .harm-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .harm-section-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .harm-section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    .harm-section-desc {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 0 auto 52px;
+    }
+
+    /* Cards grid */
+    .harm-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .harm-card {
+      flex: 1 1 240px;
+      max-width: 280px;
+      background: transparent;
+      border: none;
+      border-top: 3px solid #a87d4a;
+      padding: 32px 24px 28px;
+      box-shadow: 0 6px 24px rgba(142, 101, 52, 0.15);
+      transition: transform 0.25s, box-shadow 0.3s;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .harm-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(142, 101, 52, 0.24);
+    }
+
+    .harm-card h3 {
+      font-size: 21px;
+      font-weight: 700;
+      color: #5a351d;
+      margin: 0 0 16px;
+    }
+
+    .harm-card h3::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #8e6534;
+      margin: 14px auto 0;
+      border-radius: 2px;
+    }
+
+    .harm-card p {
+      font-size: 14px;
+      color: #7a5638;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ===== CTA FINAL ===== */
+    .harm-final {
+      padding: 80px 24px 100px;
+      text-align: center;
+      position: relative;
+      background: transparent;
+    }
+
+    .harm-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .harm-final-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .harm-final h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 14px;
+    }
+
+    .harm-final h2 span {
+      color: var(--ink);
+    }
+
+    .harm-final p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0 auto 36px;
+      max-width: 440px;
+    }
+
+    /* ===== FOOTER ===== */
+    .harm-footer {
+      background: transparent;
+      border-top: none;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .harm-footer a {
+      display: inline-block;
+      margin-bottom: 18px;
+      border: 1px solid rgba(185, 138, 24, 0.35);
+      padding: 9px 24px;
+      border-radius: 50px;
+      color: var(--gold) !important;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .harm-footer a:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+    }
+
+    .harm-footer p {
+      font-size: 12px;
+      color: rgba(45, 36, 18, 0.55);
+      margin: 0;
+    }
+
+    /* Scroll reveal animation */
+    @keyframes revealUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      animation: revealUp 0.65s ease both;
+    }
+
+    .d1 {
+      animation-delay: 0.05s;
+    }
+
+    .d2 {
+      animation-delay: 0.15s;
+    }
+
+    .d3 {
+      animation-delay: 0.25s;
+    }
+
+    .d4 {
+      animation-delay: 0.35s;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" class="absolute top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+    <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
+      <a href="./index.html"
+        class="text-2xl font-semibold tracking-tight inline-flex items-center gap-2 transition-all duration-300">
+        <img src="./logo.png" alt="Logo Apta Odonto" class="h-8 md:h-9 w-auto" />
+        <div class="flex items-center gap-2">
+          <span class="whitespace-nowrap">
+            <span id="brand-text" style="color: #5a351d;">APTA</span>
+            <span style="color: #cfab47; font-family: 'Dancing Script', cursive; font-size: 1.1em; margin-left: 1px;">
+              odonto</span>
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6">
+        <a href="./index.html" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #5a351d;">Início</a>
+        <a href="./index.html#servicos" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #5a351d;">Serviços</a>
+        <a href="./urgencia.html" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #5a351d;">Urgência 24h</a>
+        <a href="./kids.html" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #5a351d;">Apta
+          <span><span style="color: #90ee90">K</span><span style="color: #ff8da1">i</span><span
+              style="color: #f9d423">d</span><span style="color: #4da3ff">s</span></span></a>
+        <a href="./harmonizacao.html" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #b98a18; font-weight: 700;">Harmonização</a>
+        <a href="./index.html#sobre" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #5a351d;">Sobre</a>
+        <a href="./index.html#faq" class="nav-link text-sm font-medium transition-colors duration-200"
+          style="color: #5a351d;">FAQ</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg transition-colors" style="color: #5a351d;">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+        <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border my-6 mx-4 rounded-xl p-6 space-y-4 animate-reveal shadow-xl"
+      style="background: rgba(255, 255, 255, 0.96); border-color: rgba(185, 138, 24, 0.18);">
+      <a href="./index.html" class="block font-medium py-2 transition-colors" style="color: #5a351d;">Início</a>
+      <a href="./index.html#servicos" class="block font-medium py-2 transition-colors"
+        style="color: #5a351d;">Serviços</a>
+      <a href="./urgencia.html" class="block font-medium py-2 transition-colors" style="color: #5a351d;">Urgência
+        24h</a>
+      <a href="./kids.html" class="block font-medium py-2 transition-colors" style="color: #5a351d;">Apta
+        <span><span style="color: #90ee90">K</span><span style="color: #ff8da1">i</span><span
+            style="color: #f9d423">d</span><span style="color: #4da3ff">s</span></span></a>
+      <a href="./harmonizacao.html" class="block font-medium py-2 transition-colors"
+        style="color: #b98a18; font-weight: 700;">Harmonização</a>
+      <a href="./index.html#sobre" class="block font-medium py-2 transition-colors" style="color: #5a351d;">Sobre</a>
+      <a href="./index.html#faq" class="block font-medium py-2 transition-colors" style="color: #5a351d;">FAQ</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="harm-hero">
+      <h1 class="harm-title reveal d2">
+        Harmonização<br><span>Facial</span>
+      </h1>
+      <p class="harm-subtitle reveal d3">
+        Beleza natural, resultado duradouro. Procedimentos personalizados com tecnologia avançada e segurança
+        comprovada.
+      </p>
+      <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20Harmoniza%C3%A7%C3%A3o%20Facial!"
+        target="_blank" rel="noopener noreferrer" class="harm-cta reveal d4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+        </svg>
+        Agendar Avaliação Gratuita
+      </a>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- PROCEDIMENTOS -->
+    <section class="harm-section">
+      <div class="harm-inner">
+        <p class="harm-section-label">Procedimentos</p>
+        <h2 class="harm-section-title">Tecnologia avançada para resultados naturais</h2>
+        <p class="harm-section-desc">Cada procedimento é personalizado, respeitando as proporções e a harmonia do seu
+          rosto.</p>
+
+        <div class="harm-grid">
+          <!-- Lentes -->
+          <div class="harm-card">
+            <h3>Lentes de Contato Dental</h3>
+            <p>Sorriso perfeito sem desgaste excessivo — resultado cinematográfico e extremamente natural.</p>
+          </div>
+          <!-- Botox -->
+          <div class="harm-card">
+            <h3>Toxina Botulínica</h3>
+            <p>Suavização de rugas com resultado natural e duradouro. Aplicação precisa e segura.</p>
+          </div>
+          <!-- Preenchimento -->
+          <div class="harm-card">
+            <h3>Preenchimento Facial</h3>
+            <p>Ácido hialurônico para restaurar volume, contorno e harmonia facial com naturalidade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gold-divider"></div>
+
+    <!-- CTA FINAL -->
+    <section class="harm-final">
+      <div class="harm-final-inner">
+        <h2>Pronto para <span>realçar sua beleza?</span></h2>
+        <p>Marque sua avaliação gratuita e descubra qual procedimento é ideal para o seu caso. Sem compromisso.</p>
+        <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20de%20Harmoniza%C3%A7%C3%A3o%20Facial!"
+          target="_blank" rel="noopener noreferrer" class="harm-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+          </svg>
+          Falar pelo WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="harm-footer">
+      <a href="./index.html">← Voltar para o início</a>
+      <p>© <span id="current-year">2026</span> Apta Odonto — CNPJ: 33.201.469/0001-48 — Todos os direitos reservados.
+      </p>
+    </footer>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

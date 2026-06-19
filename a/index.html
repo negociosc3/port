@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apta Odonto — Urgência 24h, Implantes e Odontopediatria</title>
+  <link rel="icon" href="./a.ico" type="image/x-icon" />
+  <meta name="description"
+    content="Clínica odontológica 24 horas em Boa Vista, Roraima. Urgências, implantes, harmonização facial e odontopediatria." />
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="home-page bg-background text-foreground font-outfit antialiased">
+  <!-- Navbar -->
+  <nav id="navbar" class="absolute top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+    <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
+      <a id="navbar-brand" href="./index.html"
+        class="text-2xl font-semibold tracking-tight inline-flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none">
+        <img src="./logo.png" alt="Logo Apta Odonto" class="h-8 md:h-9 w-auto" />
+        <div class="flex items-center gap-2">
+          <span class="whitespace-nowrap">
+            <span id="brand-text" class="text-white">APTA</span>
+            <span style="color: #ba963d; font-family: 'Dancing Script', cursive; font-size: 1.1em; margin-left: 1px;">
+              odonto</span>
+          </span>
+          <!-- Celular: Selo Plantão 24h -->
+          <span class="badge md:hidden scale-[0.85] origin-left flex-shrink-0">
+            <span class="badge__dot-wrap">
+              <span class="badge__pulse"></span>
+              <span class="badge__dot"></span>
+            </span>
+            <span class="badge__text">Plantão 24h</span>
+          </span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6">
+        <a href="./index_teste.html"
+          class="nav-link nav-link-active text-sm font-medium transition-colors duration-200 hover:text-[#4ec3a6]">Início</a>
+        <a href="./index.html#servicos"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white hover:text-[#4ec3a6]">Serviços</a>
+        <a href="./urgencia.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white hover:text-[#4ec3a6]">Urgência
+          24h</a>
+        <a href="./kids.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white hover:text-[#4ec3a6]">Apta
+          <span><span style="color: #90ee90">K</span><span style="color: #ff8da1">i</span><span
+              style="color: #f9d423">d</span><span style="color: #4da3ff">s</span></span></a>
+        <a href="./harmonizacao.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white hover:text-[#4ec3a6]">Harmonização</a>
+        <a href="./index.html#sobre"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white hover:text-[#4ec3a6]">Sobre</a>
+        <a href="./index.html#faq"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white hover:text-[#4ec3a6]">FAQ</a>
+
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg transition-colors text-white">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+        <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border my-6 mx-4 rounded-xl p-6 space-y-4 animate-reveal shadow-xl"
+      style="background: linear-gradient(135deg, #0b4a3f 0%, #062d27 100%); border-color: rgba(255, 255, 255, 0.1);">
+      <a href="./index_teste.html"
+        class="block nav-link-active font-medium py-2 hover:text-[#4ec3a6] transition-colors">Início</a>
+      <a href="./index.html#servicos"
+        class="block text-white font-medium py-2 hover:text-[#4ec3a6] transition-colors">Serviços</a>
+      <a href="./urgencia.html"
+        class="block text-white font-medium py-2 hover:text-[#4ec3a6] transition-colors">Urgência 24h</a>
+      <a href="./kids.html" class="block text-white font-medium py-2 hover:text-[#4ec3a6] transition-colors">Apta
+        <span><span style="color: #90ee90">K</span><span style="color: #ff8da1">i</span><span
+            style="color: #f9d423">d</span><span style="color: #4da3ff">s</span></span></a>
+      <a href="./harmonizacao.html"
+        class="block text-white font-medium py-2 hover:text-[#4ec3a6] transition-colors">Harmonização</a>
+      <a href="./index.html#sobre"
+        class="block text-white font-medium py-2 hover:text-[#4ec3a6] transition-colors">Sobre</a>
+      <a href="./index.html#faq"
+        class="block text-white font-medium py-2 hover:text-[#4ec3a6] transition-colors">FAQ</a>
+
+    </div>
+  </nav>
+
+  <main id="app-content">
+    <div id="hero-apta-kids-bg" class="relative overflow-hidden">
+      <!-- Background único compartilhado entre o início e a seção Apta Kids -->
+      <div class="absolute inset-0">
+        <img src="imagens/background_inicio2.png" class="w-full h-full object-cover animate-image-zoom"
+          style="filter: contrast(1.15) brightness(0.8);" alt="Apta Odonto Background" />
+        <div class="absolute inset-0" style="background: rgba(6, 45, 39, 0.78)"></div>
+        <div class="absolute inset-0"
+          style="background: linear-gradient(135deg, rgba(4, 31, 27, 0.94), rgba(4, 31, 27, 0.65), rgba(4, 31, 27, 0.20))">
+        </div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-[#ba963d]/15 rounded-full filter blur-[140px] opacity-60">
+        </div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[50%] pointer-events-none"
+          style="background: radial-gradient(ellipse at center bottom, rgba(52,161,136,0.18) 0%, transparent 70%)">
+        </div>
+        <!-- Degradê verde reforçado no canto inferior direito -->
+        <div class="absolute bottom-0 right-0 w-full h-full pointer-events-none"
+          style="background: radial-gradient(circle at bottom right, rgba(52, 161, 136, 0.5) 0%, transparent 50%);">
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section id="hero-section" class="relative min-h-screen flex items-center overflow-hidden">
+
+        <div id="hero-content-wrapper"
+          class="relative z-10 container mx-auto px-6 md:px-12 lg:px-16 py-0 flex items-center justify-center">
+
+          <div class="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto">
+
+            <style>
+              @media (max-width: 767px) {
+                #hero-p-fix {
+                  padding-right: 25px !important;
+                }
+
+                #hero-section {
+                  min-height: 100vh !important;
+                  min-height: 100dvh !important;
+                  display: flex !important;
+                  flex-direction: column !important;
+                  align-items: flex-start !important;
+                  padding-top: 80px !important;
+                  padding-bottom: 0 !important;
+                  overflow-y: auto !important;
+                }
+
+                #hero-content-wrapper {
+                  flex: 1 0 auto !important;
+                  display: flex !important;
+                  align-items: center !important;
+                  justify-content: flex-start !important;
+                  margin-bottom: 0 !important;
+
+                }
+
+                #hero-indicator {
+                  position: relative !important;
+                  bottom: auto !important;
+                  left: auto !important;
+                  transform: none !important;
+                  margin: 4.5rem auto 1.5rem !important;
+                  display: flex !important;
+                }
+              }
+
+              @media (min-width: 768px) {
+                #hero-section {
+                  height: auto !important;
+                  min-height: auto !important;
+                  margin-top: 0px !important;
+                  padding-top: 150px !important;
+                  padding-bottom: 35px !important;
+                  overflow: visible !important;
+                  display: flex !important;
+                  flex-direction: column !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                }
+
+                #hero-content-wrapper {
+                  height: auto !important;
+                  min-height: auto !important;
+                  margin-top: 0px !important;
+                  padding-top: 0px !important;
+                  padding-bottom: 0px !important;
+                  overflow: visible !important;
+                  display: flex !important;
+                  flex-direction: column !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                }
+
+                #hero-indicator {
+                  position: absolute !important;
+                  bottom: 0.6rem !important;
+                  left: 50% !important;
+                  transform: translateX(-50%) !important;
+                  margin: 0 !important;
+                  display: flex !important;
+                }
+              }
+
+              @keyframes btn-pulse {
+                0% {
+                  transform: scale(1);
+                }
+
+                50% {
+                  transform: scale(1.05);
+                }
+
+                100% {
+                  transform: scale(1);
+                }
+              }
+
+              .animate-btn-pulse {
+                animation: btn-pulse 2.5s infinite ease-in-out;
+              }
+
+              @media (min-width: 1024px) {
+                #hero-title {
+                  font-size: 44px !important;
+                }
+              }
+
+              #hero-p-fix {
+                font-size: 14px !important;
+              }
+
+              @media (min-width: 768px) {
+                #hero-p-fix {
+                  font-size: 17px !important;
+                }
+              }
+
+
+              /* Centralização vertical, margens simétricas e linha de divisão do menu */
+              #navbar {
+                padding-top: 16px !important;
+                padding-bottom: 16px !important;
+              }
+
+              #navbar.navbar-fixed {
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+              }
+            </style>
+
+            <!-- 1. Linha Apta Odonto + Plantão 24h -->
+            <div class="hero-badge hidden animate-reveal-up w-full items-center justify-center gap-4 md:gap-6 mb-6"
+              style="animation-delay: 0.05s;">
+              <div class="inline-flex items-center gap-3">
+                <img src="./logo.png" alt="Logo Apta Odonto" class="h-9 md:h-11 w-auto" />
+                <span class="text-2xl md:text-3xl font-semibold tracking-tight">
+                  <span class="text-white">APTA</span>
+                  <span
+                    style="color: #ba963d; font-family: 'Dancing Script', cursive; font-size: 1.1em; margin-left: 2px;">
+                    odonto</span>
+                </span>
+              </div>
+              <span class="badge">
+                <span class="badge__dot-wrap">
+                  <span class="badge__pulse"></span>
+                  <span class="badge__dot"></span>
+                </span>
+                <span class="badge__text">Plantão 24h</span>
+              </span>
+            </div>
+
+            <!-- 2. Título (H1) -->
+            <h1 id="hero-title"
+              class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5 text-white animate-reveal-up text-center w-full"
+              style="animation-delay: 0.1s;">
+              Dor de dente é urgente.<br />
+              <span style="color: #ba963d; display: block; margin-top: 0.5rem;" class="text-center">E a gente está aqui
+                pra resolver.</span>
+            </h1>
+
+            <!-- 3. Parágrafo (P) -->
+            <p id="hero-p-fix" class="text-white/70 mb-6 animate-reveal-up leading-relaxed text-center w-full"
+              style="animation-delay: 0.25s; hyphens: none; width: 0; min-width: 100%;">
+              Atendimento de urgência 24h, 7 dias por semana. Serviço de alto padrão
+              e atendimento humanizado.
+            </p>
+
+            <!-- 4. Badges de Estatísticas -->
+            <div class="flex flex-wrap gap-2 justify-center animate-reveal-up mb-6 w-full"
+              style="animation-delay: 0.35s">
+              <div
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/15">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-[#43a047]">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <span class="text-xs font-medium text-white/85">+5.000 Pacientes</span>
+              </div>
+              <div
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/15">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-[#ba963d]">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="text-xs font-medium text-white/85">Boa Vista — RR</span>
+              </div>
+            </div>
+
+            <!-- 5. Botão CTA (Falar Conosco Agora) -->
+            <div class="animate-reveal-up w-full flex justify-center mb-6" style="animation-delay: 0.45s;">
+              <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta!"
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-normal text-sm transition-all hover:scale-105 active:scale-95 shadow-md animate-btn-pulse"
+                style="background: radial-gradient(circle at top left, #ab8d43 0%, #b89d59 100%); border: none; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: none; color: #ffffff;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+                Falar Conosco Agora
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+
+      </section>
+
+      <section id="apta-kids-destaque" class="relative overflow-hidden flex flex-col items-center justify-center"
+        style="padding-top: 1rem; padding-bottom: 0.3rem;">
+        <div class="relative z-10 container mx-auto px-6 flex justify-center">
+          <div class="relative w-full max-w-md shadow-2xl group"
+            style="border-radius: 40px; background-color: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); border-bottom: 4px solid rgba(255,255,255,0.85); overflow: hidden;">
+            <div class="relative z-10 h-full p-4 md:p-5 flex flex-col justify-end">
+              <div class="p-3 md:p-4 transform transition-all duration-500 group-hover:-translate-y-2"
+                style="border-radius: 24px;">
+                <div class="mb-5 overflow-hidden" style="border-radius: 24px;">
+                  <img src="./imagens/kids.png" alt="Apta Kids - Odontopediatria"
+                    class="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy" />
+                </div>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-2 tracking-wide uppercase"
+                  style="font-family: 'Fredoka', sans-serif;">
+                  <span style="color: #ffffff;">Apta</span>
+                  <span>
+                    <span style="color: #90ee90;">K</span><span style="color: #ff8da1;">i</span><span
+                      style="color: #f9d423;">d</span><span style="color: #4da3ff;">s</span>
+                  </span>
+                </h2>
+                <p class="text-sm font-medium leading-relaxed mb-4" style="color: #ffffff; opacity: 0.9;">
+                  Odontopediatria humanizada com sedação consciente and atendimento especializado para crianças
+                  neuroatípicas.
+                </p>
+                <div class="flex">
+                  <a href="./kids.html"
+                    class="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm active:scale-95"
+                    style="background: rgba(255,255,255,0.1); border: 1px solid #1f7bdd; border-bottom: 4px solid #4da3ff; color: #ffffff;">
+                    Saiba mais
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="hero-indicator"
+          class="md:absolute relative z-10 md:bottom-4 md:left-1/2 md:-translate-x-1/2 flex flex-col items-center gap-2 w-max mx-auto">
+          <span class="text-xs tracking-widest uppercase whitespace-nowrap"
+            style="color: #f6f4ee; font-size: 9.6px;">Conheça nossos
+            serviços</span>
+          <a href="#servicos">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="animate-bounce" style="color: #f6f4ee; opacity: 0.9;">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Service Section -->
+    <section id="servicos" class="relative min-h-screen flex flex-col justify-center py-20"
+      style="background: #f3eee3;">
+      <div class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse at 20% 50%, rgba(52,161,136,0.08) 0%, transparent 60%)"></div>
+      <div class="container mx-auto relative z-10 px-4 md:px-8">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold tracking-[0.2em] uppercase" style="color: #9c7a2b">Nossas
+            Especialidades</span>
+          <h2 class="text-3xl md:text-3xl font-bold mt-3 leading-tight" style="color: #72551f;">Cuidado completo</h2>
+          <p class="text-base mt-3 max-w-xl mx-auto" style="color: #5f503c;">Clínica multidisciplinar com equipe
+            especializada em urgência, pediatria e estética avançada.</p>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto" id="services-carousel">
+          <div class="overflow-hidden">
+            <div id="carousel-track" class="flex transition-transform duration-500 ease-out"
+              style="transform: translateX(0%)">
+              <div class="flex-shrink-0 px-3 carousel-item w-full md:w-1/3">
+                <div
+                  class="elevated-card overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full">
+                  <div class="overflow-hidden rounded-t-lg service-card-image"
+                    style="border-radius: 0.75rem 0.75rem 0 0;">
+                    <img src="./imagens/background_inicio.png" alt="Urgência Odontológica 24h"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy" />
+                  </div>
+                  <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-base font-bold mb-2 leading-tight">Urgência 24h</h3>
+                    <p class="text-[11px] leading-relaxed mb-4 flex-1">Atendimento imediato para
+                      emergências odontológicas, 24/7 — inclusive feriados.</p>
+                    <div class="flex mt-2 mb-1">
+                      <a href="./urgencia.html"
+                        class="btn-more-custom inline-flex items-center gap-3 px-3 py-1.5 rounded-md text-xs transition-all duration-200 hover:gap-3">
+                        Saiba mais <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-shrink-0 px-3 carousel-item w-full md:w-1/3">
+                <div
+                  class="elevated-card overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full">
+                  <div class="overflow-hidden rounded-t-lg service-card-image"
+                    style="border-radius: 0.75rem 0.75rem 0 0;">
+                    <img src="./imagens/harmo.png" alt="Harmonização Facial"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy" />
+                  </div>
+                  <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-base font-bold mb-2 leading-tight">Harmonização Facial</h3>
+                    <p class="text-[11px] leading-relaxed mb-4 flex-1">Procedimentos estéticos
+                      faciais
+                      com tecnologia avançada e resultado natural.</p>
+                    <div class="flex mt-2 mb-1">
+                      <a href="./harmonizacao.html"
+                        class="btn-more-custom inline-flex items-center gap-3 px-3 py-1.5 rounded-md text-xs transition-all duration-200 hover:gap-3">
+                        Saiba mais <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-shrink-0 px-3 carousel-item w-full md:w-1/3">
+                <div
+                  class="elevated-card overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full">
+                  <div class="overflow-hidden rounded-t-lg service-card-image"
+                    style="border-radius: 0.75rem 0.75rem 0 0;">
+                    <img src="./imagens/lentes.jpg" alt="Lentes de Contato Dental"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy" />
+                  </div>
+                  <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-base font-bold mb-2 leading-tight">Lentes de Contato Dental
+                    </h3>
+                    <p class="text-[11px] leading-relaxed mb-4 flex-1">Sorriso perfeito, resultado cinematográfico e
+                      duradouro.</p>
+                    <div class="flex mt-2 mb-1">
+                      <a href="./harmonizacao.html"
+                        class="btn-more-custom inline-flex items-center gap-3 px-3 py-1.5 rounded-md text-xs transition-all duration-200 hover:gap-3">
+                        Saiba mais <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-shrink-0 px-3 carousel-item w-full md:w-1/3">
+                <div
+                  class="elevated-card overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 h-full">
+                  <div class="overflow-hidden rounded-t-lg service-card-image"
+                    style="border-radius: 0.75rem 0.75rem 0 0;">
+                    <img src="./imagens/implan.jpg" alt="Implantes Dentários"
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy" />
+                  </div>
+                  <div class="p-6 flex flex-col flex-1">
+                    <h3 class="text-base font-bold mb-2 leading-tight">Implantes Dentários</h3>
+                    <p class="text-[11px] leading-relaxed mb-4 flex-1">Implantodontia de alta
+                      precisão para recuperar a função e a estética.</p>
+                    <div class="flex mt-2 mb-1">
+                      <a href="./harmonizacao.html"
+                        class="btn-more-custom inline-flex items-center gap-3 px-3 py-1.5 rounded-md text-xs transition-all duration-200 hover:gap-3">
+                        Saiba mais <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles do carrossel -->
+          <button id="carousel-prev"
+            class="hidden md:block absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 transition-all hover:scale-110 active:scale-95 z-20"
+            style="color: #8c6c2e; background: none; border: none; cursor: pointer;" aria-label="Anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button id="carousel-next"
+            class="hidden md:block absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 transition-all hover:scale-110 active:scale-95 z-20"
+            style="color: #8c6c2e; background: none; border: none; cursor: pointer;" aria-label="Próximo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+
+          <!-- Dots indicadores -->
+          <div id="carousel-dots" class="flex justify-center gap-2 mt-8">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="relative min-h-screen flex items-center py-20 overflow-hidden"
+      style="background-color: #0b4a3f !important;">
+      <!-- Efeitos de Fundo (Atmosphere) -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0"
+          style="background: radial-gradient(circle at 70% 30%, rgba(52, 161, 136, 0.15) 0%, transparent 60%);">
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-full"
+          style="background: radial-gradient(circle at bottom left, rgba(186, 150, 61, 0.08) 0%, transparent 50%);">
+        </div>
+      </div>
+      <div class="container mx-auto scroll-reveal relative z-10">
+        <!-- Títulos Mobile — Aparecem antes da imagem -->
+        <div class="md:hidden text-left px-4 stagger-up" style="margin-bottom: 2.5rem !important;">
+          <span class="text-xs font-semibold tracking-[0.2em] uppercase" style="color: #e5c365;">Sobre Nós</span>
+          <h2 class="text-4xl font-bold mt-3 text-primary-foreground leading-tight">Dra. Nayara Matias</h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-2 items-stretch">
+          <div class="stagger-up flex flex-col justify-between relative min-h-full">
+            <div class="relative" style="margin-top: 8px; padding-bottom: 35px;">
+              <div class="rounded-2xl overflow-hidden"
+                style="box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); max-width: 58%; margin-left: 22%;">
+                <img src="./imagens/nayara.jpg" alt="Dra. Nayara Matias" class="w-full h-auto block object-cover"
+                  style="aspect-ratio: 4 / 5; object-position: center 25%;"
+                  onerror="this.src='https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=800&auto=format&fit=crop'" />
+              </div>
+            </div>
+
+            <div class="absolute bottom-0 left-0 w-full px-4 z-20 flex" style="pointer-events: none;">
+              <div class="rounded-xl p-4 shadow-xl sobre-info-card text-center sobre-info-card-wrapper-inner">
+                <p class="text-sm font-semibold" style="color: #ffffff;">CRO/RR 1091</p>
+                <p class="text-xs" style="color: rgba(255, 255, 255, 0.85);">Registro Profissional</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stagger-up flex flex-col justify-between sobre-text-col" style="animation-delay: 0.15s;">
+            <div>
+              <!-- Títulos Desktop -->
+              <div class="hidden md:block">
+                <span class="text-xs font-semibold tracking-[0.2em] uppercase" style="color: #e5c365;">Sobre Nós</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-3 mb-6 text-primary-foreground leading-tight">Dra. Nayara
+                  Matias
+                </h2>
+              </div>
+              <p class="text-base text-primary-foreground/60 mb-4 leading-relaxed"
+                style="text-align: justify; hyphens: none;">
+                Responsável técnica da Apta Odonto Clínica Odontológica, a Dra. Nayara Matias atua na supervisão dos
+                atendimentos e protocolos clínicos, coordenando uma equipe multidisciplinar de clínicos gerais e
+                especialistas.
+              </p>
+              <p class="text-base text-primary-foreground/60 mb-8 leading-relaxed"
+                style="text-align: justify; hyphens: none;">
+                Com uma estrutura física moderna e completa, a Apta Odonto investe em tecnologia avançada para
+                proporcionar conforto, segurança e qualidade em todas as áreas de atendimento.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <div class="p-4 text-center rounded-xl shadow-lg sobre-info-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="mx-auto mb-2" style="color: #e5c365;">
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                </svg>
+                <p class="font-medium text-xs" style="color: #ffffff;">EPAO — 180</p>
+                <p class="text-[11px] mt-1 font-medium" style="color: rgba(255, 255, 255, 0.85);">Registro da Clínica
+                </p>
+              </div>
+              <div class="p-4 text-center rounded-xl shadow-lg sobre-info-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="mx-auto mb-2" style="color: #e5c365;">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <p class="font-medium text-xs" style="color: #ffffff;">Desde 2019</p>
+                <p class="text-[11px] mt-1 font-medium" style="color: rgba(255, 255, 255, 0.85);">Atuação em Boa Vista
+                </p>
+              </div>
+              <div class="p-4 text-center rounded-xl shadow-lg sobre-info-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="mx-auto mb-2" style="color: #e5c365;">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                <p class="font-medium text-xs" style="color: #ffffff;">Equipe Completa</p>
+                <p class="text-[11px] mt-1 font-medium" style="color: rgba(255, 255, 255, 0.85);">Multi&shy;disciplinar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Location Section -->
+    <section id="localizacao" class="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      style="background: #f3eee3; padding-top: 1.5rem; padding-bottom: 2rem;">
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-6 scroll-reveal">
+          <span class="text-xs font-semibold tracking-[0.2em] uppercase" style="color: #9c7a2b">Nossa Clínica</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-3 leading-tight" style="color: #72551f;">Onde estamos localizados
+          </h2>
+          <p class="text-base mt-4 max-w-2xl mx-auto" style="color: #5f503c;">
+            Av. General Ataíde Teive, 6057 — Cambará, Boa Vista — RR. <br class="hidden md:block"> Atendimento
+            odontológico humanizado e tecnologia de ponta.
+          </p>
+        </div>
+      </div>
+
+      <div class="container mx-auto px-6 max-w-lg relative z-10 scroll-reveal stagger-up mt-4">
+        <div class="rounded-2xl overflow-hidden"
+          style="border: 1px solid #ba963d; border-bottom: 8px solid #ba963d; box-shadow: 0 10px 40px rgba(186,150,61,0.12);">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.06230645343155!2d-60.73456344050791!3d2.8170344999985817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8d930589d65f8749%3A0x2496221c2a19f9e1!2sApta%20Odonto%20Clinica%20Odontol%C3%B3gica!5e0!3m2!1spt-BR!2sus!4v1776741593292!5m2!1spt-BR!2sus"
+            width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="mt-8 text-center">
+          <a href="https://maps.app.goo.gl/9zGkYv7E2C6iS9Tq7" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white font-normal text-sm transition-all hover:scale-105 active:scale-95 shadow-lg"
+            style="background: #ba963d; box-shadow: 0 4px 14px rgba(186,150,61,0.3);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Abrir no Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="w-full relative" style="background-color: #196d5c !important;">
+      <button id="main-faq-toggle"
+        class="w-full flex items-center justify-center gap-3 py-2 text-white transition-opacity hover:opacity-95"
+        style="background-color: #196d5c; border: none; cursor: pointer;">
+        <span id="main-faq-toggle-text" class="font-semibold uppercase tracking-widest" style="font-size: 12px;">Ver
+          Perguntas
+          Frequentes</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="transition-transform duration-300" id="main-faq-chevron">
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+
+      <div id="main-faq-content"
+        class="overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0 relative"
+        style="background-color: #196d5c !important;">
+        <div class="absolute inset-0 pointer-events-none"
+          style="background: radial-gradient(ellipse at 50% 80%, rgba(255,255,255,0.03) 0%, transparent 55%)"></div>
+        <div id="main-faq-content-inner" class="container mx-auto max-w-3xl relative z-10 scroll-reveal"
+          style="padding-top: 1.5rem !important; padding-bottom: 2rem !important;">
+
+          <div class="space-y-4 faq-container">
+            <div class="rounded-xl overflow-hidden transition-all duration-500 stagger-up"
+              style="background-color: #0b4a3f;">
+              <button
+                class="w-full flex items-center justify-between p-5 text-left transition-colors duration-200 active:scale-[0.995]">
+                <span class="font-medium pr-4 text-sm" style="color: #ffffff;">A clínica atende realmente 24
+                  horas?</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="flex-shrink-0 transition-transform duration-300 chevron"
+                  style="color: rgba(255,255,255,0.85);">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="overflow-hidden transition-all duration-300 ease-out max-h-0 opacity-0 content">
+                <p class="px-5 pb-5 pt-2 text-sm leading-relaxed" style="color: rgba(255,255,255,0.85);">Sim!
+                  Funcionamos 24 horas por dia,
+                  7 dias por semana, incluindo feriados. Nosso plantão de urgência está sempre pronto para atender
+                  emergências odontológicas.</p>
+              </div>
+            </div>
+            <div class="rounded-xl overflow-hidden transition-all duration-500 stagger-up"
+              style="animation-delay: 0.07s; background-color: #0b4a3f;">
+              <button
+                class="w-full flex items-center justify-between p-5 text-left transition-colors duration-200 active:scale-[0.995]">
+                <span class="font-medium pr-4 text-sm" style="color: #ffffff;">O que é a sedação consciente usada na
+                  Apta
+                  Kids?</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="flex-shrink-0 transition-transform duration-300 chevron"
+                  style="color: rgba(255,255,255,0.85);">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="overflow-hidden transition-all duration-300 ease-out max-h-0 opacity-0 content">
+                <p class="px-5 pb-5 pt-2 text-sm leading-relaxed" style="color: rgba(255,255,255,0.85);">É uma técnica
+                  segura realizada com óxido nitroso e oxigênio para acalmar a criança durante o atendimento. A criança
+                  permanece acordada e cooperativa, reduzindo o medo e a ansiedade.</p>
+              </div>
+            </div>
+            <div class="rounded-xl overflow-hidden transition-all duration-500 stagger-up"
+              style="animation-delay: 0.14s; background-color: #0b4a3f;">
+              <button
+                class="w-full flex items-center justify-between p-5 text-left transition-colors duration-200 active:scale-[0.995]">
+                <span class="font-medium pr-4 text-sm" style="color: #ffffff;">Vocês fazem atendimento para pacientes
+                  com necessidades especiais?</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="flex-shrink-0 transition-transform duration-300 chevron"
+                  style="color: rgba(255,255,255,0.85);">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="overflow-hidden transition-all duration-300 ease-out max-h-0 opacity-0 content">
+                <p class="px-5 pb-5 pt-2 text-sm leading-relaxed" style="color: rgba(255,255,255,0.85);">Sim! Temos
+                  profissionais capacitados e preparados para acolher crianças e adultos neuroatípicos, garantindo um
+                  atendimento humanizado, paciente e adaptado a cada necessidade.</p>
+              </div>
+            </div>
+            <div class="rounded-xl overflow-hidden transition-all duration-500 stagger-up"
+              style="animation-delay: 0.21s; background-color: #0b4a3f;">
+              <button
+                class="w-full flex items-center justify-between p-5 text-left transition-colors duration-200 active:scale-[0.995]">
+                <span class="font-medium pr-4 text-sm" style="color: #ffffff;">Quais formas de pagamento são
+                  aceitas?</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="flex-shrink-0 transition-transform duration-300 chevron"
+                  style="color: rgba(255,255,255,0.85);">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div class="overflow-hidden transition-all duration-300 ease-out max-h-0 opacity-0 content">
+                <p class="px-5 pb-5 pt-2 text-sm leading-relaxed" style="color: rgba(255,255,255,0.85);">Aceitamos
+                  diversas formas de
+                  pagamento. Entre em contato pelo WhatsApp para saber as condições especiais para o seu tratamento.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="section-padding-sm relative overflow-hidden"
+    style="background: linear-gradient(180deg, #0b4a3f 0%, #062d27 100%); padding-bottom: 1.5rem;">
+    <div class="absolute inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse at 50% 100%, rgba(186,150,61,0.08) 0%, transparent 60%)"></div>
+
+    <div class="container mx-auto px-8 md:px-16 relative z-10">
+      <div class="flex footer-responsive-container mb-12">
+        <div class="footer-column">
+          <h3 class="text-xl font-semibold text-primary-foreground mb-6 tracking-tight"
+            style="font-family: 'Outfit', sans-serif;">
+            APTA<span
+              style="color: #ba963d; font-family: 'Dancing Script', cursive; font-size: 1.2em; margin-left: 2px;">
+              odonto</span>
+          </h3>
+          <p class="text-sm text-white/70 leading-relaxed">
+            Excelência em odontologia 24 horas em Boa Vista — Roraima. Implantes, Harmonização e Odontopediatria com
+            Sedação.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="font-semibold text-primary-foreground text-sm mb-6">Contato</h4>
+          <div class="space-y-3 text-white/70 text-sm">
+            <a href="tel:+5595991414735" class="flex items-center gap-3 hover:text-gold transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="flex-shrink-0">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              (95) 99141-4735
+            </a>
+            <a href="tel:+559532247992" class="flex items-center gap-3 hover:text-gold transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="flex-shrink-0">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              (95) 3224-7992
+            </a>
+            <a href="mailto:aptaodonto@gmail.com" class="flex items-center gap-3 hover:text-gold transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="flex-shrink-0">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              aptaodonto@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column flex flex-col items-start">
+          <h4 class="font-semibold text-primary-foreground text-sm mb-6">Siga-nos</h4>
+          <div class="footer-social-icons">
+            <a href="https://instagram.com/apta.odonto" target="_blank" rel="noopener noreferrer"
+              class="flex flex-col items-center gap-2 group">
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110 shadow-lg"
+                style="background: linear-gradient(135deg, #ba963d, #34a188);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </div>
+              <span
+                class="text-[11px] font-medium text-white/70 group-hover:text-white transition-colors">@apta.odonto</span>
+            </a>
+            <a href="https://instagram.com/aptakids" target="_blank" rel="noopener noreferrer"
+              class="flex flex-col items-center gap-2 group">
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center text-white transition-all duration-300 hover:scale-110 shadow-lg"
+                style="background: linear-gradient(135deg, #4da3ff, #ff8da1);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </div>
+              <span
+                class="text-[11px] font-medium text-white/70 group-hover:text-white transition-colors">@aptakids</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 lg:pt-2 text-center pb-4 footer-bottom-wrapper">
+        <!-- Botão Estático do Footer (Exclusivo Mobile) -->
+        <div id="static-chat-container" class="mb-8 flex justify-center transition-all duration-300 opacity-0 lg:hidden"
+          style="pointer-events: none;">
+          <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta!"
+            target="_blank" rel="noopener noreferrer" id="static-chatbot-trigger"
+            class="animate-chatbot-pulse w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+            style="background: linear-gradient(135deg, #43a047, #2e7d32); box-shadow: 0 6px 24px rgba(67, 160, 71, 0.45);"
+            aria-label="Contato via WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+            </svg>
+          </a>
+        </div>
+
+        <p class="text-xs text-white/70">
+          © <span id="current-year">2026</span> Apta Odonto — CNPJ: 33.201.469/0001-48 — Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Button -->
+  <div id="floating-chat-container"
+    class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 transition-opacity duration-300"
+    style="opacity: 0; pointer-events: none;">
+    <!-- Tooltip -->
+    <div id="chatbot-tooltip"
+      class="hidden bg-card border border-border rounded-2xl px-4 py-3 shadow-xl max-w-[200px] animate-reveal-up relative">
+      <button id="chatbot-tooltip-close"
+        class="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
+        aria-label="Fechar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+      <p class="text-sm font-semibold text-foreground pr-3">Fale conosco!</p>
+      <p class="text-xs text-muted-foreground mt-0.5">Atendimento 24h via WhatsApp</p>
+      <div class="absolute -bottom-2 right-6 w-4 h-4 bg-card border-r border-b border-border rotate-45"></div>
+    </div>
+
+    <!-- Botão -->
+    <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta!" target="_blank"
+      rel="noopener noreferrer" id="chatbot-trigger"
+      class="animate-chatbot-pulse w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+      style="background: linear-gradient(135deg, #43a047, #2e7d32); box-shadow: 0 6px 24px rgba(67, 160, 71, 0.45);"
+      aria-label="Contato via WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+      </svg>
+    </a>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

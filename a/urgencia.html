@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urgência 24h - Apta Odonto</title>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Atendimento odontológico de urgência 24 horas em Boa Vista, Roraima." />
+  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="urgency-page bg-background text-foreground font-outfit antialiased">
+  <!-- Navbar -->
+  <nav id="navbar" class="absolute top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+    <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
+      <a href="./index.html"
+        class="text-2xl font-semibold tracking-tight inline-flex items-center gap-2 transition-all duration-300">
+        <img src="./logo.png" alt="Logo Apta Odonto" class="h-8 md:h-9 w-auto" />
+        <div class="flex items-center gap-2">
+          <span class="whitespace-nowrap">
+            <span id="brand-text" class="text-white">APTA</span>
+            <span style="color: #ba963d; font-family: 'Dancing Script', cursive; font-size: 1.1em; margin-left: 1px;">
+              odonto</span>
+          </span>
+
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6">
+        <a href="./index.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white/70 hover:text-[#34a188]">Início</a>
+        <a href="./index.html#servicos"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white/70 hover:text-[#34a188]">Serviços</a>
+        <a href="./urgencia.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 hover:text-[#34a188] text-[#34a188]">Urgência
+          24h</a>
+        <a href="./kids.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white/70 hover:text-[#34a188]">Apta
+          <span><span style="color: #90ee90">K</span><span style="color: #ff8da1">i</span><span
+              style="color: #f9d423">d</span><span style="color: #4da3ff">s</span></span></a>
+        <a href="./harmonizacao.html"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white/70 hover:text-[#34a188]">Harmonização</a>
+        <a href="./index.html#sobre"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white/70 hover:text-[#34a188]">Sobre</a>
+        <a href="./index.html#faq"
+          class="nav-link text-sm font-medium transition-colors duration-200 text-white/70 hover:text-[#34a188]">FAQ</a>
+
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg transition-colors text-white">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+        <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border my-6 mx-4 rounded-xl p-6 space-y-4 animate-reveal shadow-xl"
+      style="background: linear-gradient(135deg, #0b4a3f 0%, #062d27 100%); border-color: rgba(255, 255, 255, 0.1);">
+      <a href="./index.html"
+        class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">Início</a>
+      <a href="./index.html#servicos"
+        class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">Serviços</a>
+      <a href="./urgencia.html"
+        class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">Urgência 24h</a>
+      <a href="./kids.html" class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">Apta
+        <span><span style="color: #90ee90">K</span><span style="color: #ff8da1">i</span><span
+            style="color: #f9d423">d</span><span style="color: #4da3ff">s</span></span></a>
+      <a href="./harmonizacao.html"
+        class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">Harmonização</a>
+      <a href="./index.html#sobre"
+        class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">Sobre</a>
+      <a href="./index.html#faq"
+        class="block text-white/90 font-medium py-2 hover:text-[#34a188] transition-colors">FAQ</a>
+
+    </div>
+  </nav>
+
+  <main id="app-content">
+    <!-- Seção Hero -->
+    <section class="relative"
+      style="background: linear-gradient(135deg, #0b4a3f 0%, #05221d 100%); padding-top: 100px !important; padding-bottom: 80px !important;">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(52,161,136,0.15)_0%,transparent_70%)]">
+        </div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[100%]"
+          style="background: radial-gradient(ellipse at center bottom, rgba(52,161,136,0.1) 0%, transparent 70%)"></div>
+      </div>
+
+      <div class="relative z-10 container mx-auto px-6 md:px-12 lg:px-16">
+        <div class="grid md:grid-cols-2 items-center gap-8">
+          <div class="max-w-2xl">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-5 text-white animate-reveal-up"
+              style="animation-delay: 0.1s;">
+              Urgência Odontológica<br />
+              <span style="color: #ba963d; display: block; margin-top: 0.5rem;">em Boa Vista, 24/7</span>
+            </h1>
+            <p class="text-white/70 mb-6 animate-reveal-up leading-relaxed"
+              style="animation-delay: 0.25s; text-align: justify; hyphens: none; font-size: 15.3px; max-width: 32rem;">
+              Dor de dente, trauma dental, perda de prótese — nossa equipe está pronta para atender você agora.
+            </p>
+            <div class="mt-2 animate-reveal-up" style="animation-delay: 0.35s;">
+              <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20de%20urg%C3%AAncia!"
+                target="_blank" rel="noopener noreferrer" class="btn-primary text-base inline-flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+                Atendimento Emergencial Agora
+              </a>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center justify-center animate-reveal-up"
+            style="animation-delay: 0.25s; position: relative;">
+            <div class="absolute"
+              style="width: 380px; height: 270px; border-radius: 2rem; background: radial-gradient(circle at center, rgba(186,150,61,0.20) 0%, rgba(52,161,136,0.16) 45%, transparent 72%); filter: blur(10px);">
+            </div>
+            <img src="./imagens/dor.png" alt="Dor de dente - Urgência odontológica"
+              style="position: relative; z-index: 1; width: 330px; height: 230px; object-fit: cover; border-radius: 1.5rem; box-shadow: 0 18px 45px rgba(0,0,0,0.28);"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conteúdo: O que atendemos -->
+    <section id="atendimento" style="background: #f3eee3; padding: 30px 0;">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-8">
+          <h2 class="text-3xl md:text-4xl font-bold mt-4" style="color: #936d26;">O que atendemos</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-cards md:max-w-4xl mx-auto">
+          <div class="elevated-card p-7 text-center group"
+            style="background: #f3eee3 !important; color: #2f2417 !important; border: 1px solid #34a188 !important; border-bottom: 6px solid #34a188 !important;">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-5 flex items-center justify-center"
+              style="background: rgba(52,161,136,0.12)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="color: #34a188">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: #2f2417 !important;">Dor Aguda</h3>
+            <p class="text-sm leading-relaxed" style="color: #5f503c !important;">Alívio imediato de dores intensas —
+              pulpite, abscessos e inflamações.</p>
+          </div>
+
+          <div class="elevated-card p-7 text-center group"
+            style="background: #f3eee3 !important; color: #2f2417 !important; border: 1px solid #34a188 !important; border-bottom: 6px solid #34a188 !important;">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-5 flex items-center justify-center"
+              style="background: rgba(52,161,136,0.12)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="color: #34a188">
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1 6 2a1 1 0 0 1 1 1v7z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: #2f2417 !important;">Trauma Dental</h3>
+            <p class="text-sm leading-relaxed" style="color: #5f503c !important;">Dente quebrado, avulsionado ou luxado?
+              Cada minuto conta. Venha agora.</p>
+          </div>
+
+          <div class="elevated-card p-7 text-center group"
+            style="background: #f3eee3 !important; color: #2f2417 !important; border: 1px solid #34a188 !important; border-bottom: 6px solid #34a188 !important;">
+            <div class="w-14 h-14 rounded-2xl mx-auto mb-5 flex items-center justify-center"
+              style="background: rgba(52,161,136,0.12)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                style="color: #34a188">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: #2f2417 !important;">Pós-Cirúrgico</h3>
+            <p class="text-sm leading-relaxed" style="color: #5f503c !important;">Sangramentos, inchaços e complicações
+              após procedimentos dentários.</p>
+          </div>
+        </div>
+
+        <div class="mt-14 text-center">
+          <a href="https://wa.me/5595991414735?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20de%20urg%C3%AAncia!"
+            target="_blank" rel="noopener noreferrer" class="btn-primary text-base inline-flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+            </svg>
+            Atendimento Emergencial Agora
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé / Botão Voltar -->
+    <footer style="background: #f3eee3; padding-top: 25px; padding-bottom: 25px;">
+      <div class="container mx-auto px-4 text-center">
+        <a href="./index.html" class="text-sm font-medium transition-colors hover:text-[#34a188]"
+          style="display: inline-block; margin-bottom: 25px; border: 1px solid #0b4a3f; padding: 8px 20px; border-radius: 50px; color: #0b4a3f !important;">←
+          Voltar para o início</a>
+        <p class="text-xs font-medium" style="color: #0b4a3f !important;">
+          © <span id="current-year">2026</span> Apta Odonto — CNPJ: 33.201.469/0001-48 — Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+  </main>
+
+
+
+
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
