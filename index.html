@@ -849,9 +849,16 @@
             openImgIdx = 0;
             renderLightboxState();
 
+            const wasActive = designLightbox.classList.contains('active');
             designLightbox.classList.add('active');
             document.documentElement.classList.add('modal-open');
             document.body.classList.add('modal-open');
+
+            if (!wasActive) {
+                try {
+                    history.pushState({ modalOpen: true }, '', '#projeto');
+                } catch (err) { }
+            }
         }
 
         function openRjLightbox() {
@@ -860,9 +867,16 @@
             openImgIdx = 0;
             renderLightboxState();
 
+            const wasActive = designLightbox.classList.contains('active');
             designLightbox.classList.add('active');
             document.documentElement.classList.add('modal-open');
             document.body.classList.add('modal-open');
+
+            if (!wasActive) {
+                try {
+                    history.pushState({ modalOpen: true }, '', '#projeto');
+                } catch (err) { }
+            }
         }
 
         function renderLightboxState() {
@@ -962,13 +976,31 @@
             }
         }
 
-        function closeLightbox() {
+        // Função interna para fechar o modal
+        function closeLightboxInternal() {
             designLightbox.classList.remove('active');
             document.documentElement.classList.remove('modal-open');
             document.body.classList.remove('modal-open');
             currentLightboxProject = null;
             currentProjectIndex = null;
         }
+
+        // Fechar pelo botão X, clique fora ou tecla ESC
+        function closeLightbox() {
+            if (designLightbox.classList.contains('active')) {
+                closeLightboxInternal();
+                if (window.location.hash === '#projeto' || (history.state && history.state.modalOpen)) {
+                    history.back();
+                }
+            }
+        }
+
+        // Fechar modal ao apertar o botão VOLTAR do celular / navegador
+        window.addEventListener('popstate', (e) => {
+            if (designLightbox.classList.contains('active')) {
+                closeLightboxInternal();
+            }
+        });
 
         // Fechar ao clicar fora
         designLightbox.addEventListener('click', (e) => {
