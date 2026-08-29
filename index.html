@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Gabriel Almeida — Designer Gráfico | Vídeo & Web como serviços adicionais</title>
 
     <!-- Meta tags SEO -->
@@ -51,40 +51,40 @@
         </div>
     </header>
 
-    <!-- ==================== BLOCO 1: INTRO / SOBRE GABRIEL ==================== -->
-    <section class="hero-intro" id="inicio" style="padding: 120px 0 20px;">
-        <div class="hero-glow-1"></div>
-        <div class="hero-glow-2"></div>
-        <div class="container" style="max-width: 900px; text-align: center; margin: 0 auto;">
-            <h1 style="font-size: 2.8rem; line-height: 1.2; margin-bottom: 8px;">Gabriel Almeida</h1>
-            <p
-                style="font-size: 1.35rem; color: var(--accent-primary); font-weight: 700; margin-bottom: 0; font-family: var(--font-heading);">
-                Designer Gráfico
-            </p>
-        </div>
-    </section>
-
-    <!-- ==================== BLOCO 2: DESIGNS (CARROSSEL DE ARTES) ==================== -->
-    <section class="design-section" id="design" style="padding: 10px 0 35px; background: transparent;">
-        <div class="container">
-            <div class="carousel-outer">
-                <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Anterior"><i
-                        data-lucide="chevron-left"></i></button>
-                <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próximo"><i
-                        data-lucide="chevron-right"></i></button>
-
-                <div class="carousel-viewport">
-                    <div class="carousel-track" id="designTrack">
-
-                        <!-- Cards gerados via JS dinamicamente no final para melhor organização -->
-
-                    </div>
-                </div>
-
-                <div class="carousel-dots" id="designDots"></div>
+    <!-- ==================== BLOCO COMBINADO: INTRO + ARTES COM DEGRADÊ CONTÍNUO ==================== -->
+    <div class="hero-artes-combined">
+        <!-- BLOCO 1: INTRO / SOBRE GABRIEL -->
+        <section class="hero-intro" id="inicio" style="padding: 110px 0 15px;">
+            <div class="container" style="max-width: 900px; text-align: center; margin: 0 auto;">
+                <h1 class="hero-main-title">Gabriel Almeida</h1>
+                <p class="hero-main-subtitle">
+                    Designer Gráfico
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- BLOCO 2: DESIGNS (CARROSSEL DE ARTES) -->
+        <section class="design-section" id="design" style="padding: 10px 0 45px; background: transparent;">
+            <div class="container">
+                <div class="carousel-outer">
+                    <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Anterior"><i
+                            data-lucide="chevron-left"></i></button>
+                    <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próximo"><i
+                            data-lucide="chevron-right"></i></button>
+
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="designTrack">
+
+                            <!-- Cards gerados via JS dinamicamente no final para melhor organização -->
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-dots" id="designDots"></div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- ==================== BLOCO FERRAMENTAS QUE DOMINO ==================== -->
     <section class="tools-section" style="padding: 10px 0 35px;">
@@ -474,10 +474,7 @@
                 </button>
             </div>
             <div class="lightbox-meta">
-                <h3>
-                    <span id="lightboxTitle">Título</span>
-                    <span class="lightbox-counter" id="lightboxCounter">1 / 1</span>
-                </h3>
+                <h3 id="lightboxTitle">Título</h3>
                 <p class="lightbox-desc" id="lightboxDesc">Descrição do projeto</p>
             </div>
         </div>
@@ -811,7 +808,6 @@
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxDesc = document.getElementById('lightboxDesc');
-        const lightboxCounter = document.getElementById('lightboxCounter');
 
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
@@ -836,10 +832,12 @@
             ]
         };
 
+        let currentProjectIndex = null;
         let currentLightboxProject = null;
         let openImgIdx = 0;
 
         function openProjectLightbox(projIdx) {
+            currentProjectIndex = projIdx;
             currentLightboxProject = projects[projIdx];
             openImgIdx = 0;
             renderLightboxState();
@@ -849,6 +847,7 @@
         }
 
         function openRjLightbox() {
+            currentProjectIndex = null;
             currentLightboxProject = rjWebsiteData;
             openImgIdx = 0;
             renderLightboxState();
@@ -862,7 +861,6 @@
             const project = currentLightboxProject;
 
             const isCustomItems = Array.isArray(project.items);
-            const totalImgs = isCustomItems ? project.items.length : project.images.length;
 
             if (isCustomItems) {
                 const currentItem = project.items[openImgIdx];
@@ -893,16 +891,29 @@
             // Retorna o scroll para o topo a cada troca de imagem
             lightboxImageWrapper.scrollTop = 0;
 
-            // Contador
-            lightboxCounter.textContent = `${openImgIdx + 1} / ${totalImgs}`;
+            lightboxPrev.style.display = 'flex';
+            lightboxNext.style.display = 'flex';
+        }
 
-            // Exibir setas apenas se houver mais de uma imagem no projeto
-            if (totalImgs > 1) {
-                lightboxPrev.style.display = 'flex';
-                lightboxNext.style.display = 'flex';
+        // Navegação normal e fluida através das setas nativas
+        function nextLightboxImage() {
+            if (!currentLightboxProject) return;
+            const project = currentLightboxProject;
+            const total = Array.isArray(project.items) ? project.items.length : project.images.length;
+
+            if (openImgIdx < total - 1) {
+                openImgIdx++;
+                renderLightboxState();
             } else {
-                lightboxPrev.style.display = 'none';
-                lightboxNext.style.display = 'none';
+                if (currentProjectIndex !== null) {
+                    currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+                    currentLightboxProject = projects[currentProjectIndex];
+                    openImgIdx = 0;
+                    renderLightboxState();
+                } else {
+                    openImgIdx = 0;
+                    renderLightboxState();
+                }
             }
         }
 
@@ -910,22 +921,29 @@
             if (!currentLightboxProject) return;
             const project = currentLightboxProject;
             const total = Array.isArray(project.items) ? project.items.length : project.images.length;
-            openImgIdx = (openImgIdx - 1 + total) % total;
-            renderLightboxState();
-        }
 
-        function nextLightboxImage() {
-            if (!currentLightboxProject) return;
-            const project = currentLightboxProject;
-            const total = Array.isArray(project.items) ? project.items.length : project.images.length;
-            openImgIdx = (openImgIdx + 1) % total;
-            renderLightboxState();
+            if (openImgIdx > 0) {
+                openImgIdx--;
+                renderLightboxState();
+            } else {
+                if (currentProjectIndex !== null) {
+                    currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+                    currentLightboxProject = projects[currentProjectIndex];
+                    openImgIdx = currentLightboxProject.images.length - 1;
+                    renderLightboxState();
+                } else {
+                    openImgIdx = total - 1;
+                    renderLightboxState();
+                }
+            }
         }
 
         function closeLightbox() {
             designLightbox.classList.remove('active');
             document.body.style.overflow = '';
+            lightboxImageWrapper.classList.remove('is-zoomed');
             currentLightboxProject = null;
+            currentProjectIndex = null;
         }
 
         // Fechar ao clicar fora
