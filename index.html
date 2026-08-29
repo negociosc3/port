@@ -584,9 +584,9 @@
                 images: ["imagens/2026-02-28_20-58-09_UTC.jpg"]
             },
             {
-                title: "Capa de E-Book — Jaque Torres",
+                title: "Capa de Carrossel de Instagram — Jaque Torres",
                 tag: "Social Media / Infoprodutos",
-                desc: "Design promocional e capa conceitual com dicas de vendas de roupas online criada para Instagram.",
+                desc: "Design promocional e capa conceitual para carrossel de dicas de vendas de roupas online.",
                 images: ["imagens/2026-02-28_20-13-40_UTC.jpg"]
             }
         ];
@@ -740,6 +740,30 @@
             updateDesignCarouselState();
         });
 
+        // Touch Swipe para o carrossel de designs/artes
+        let designTouchStartX = 0;
+        let designTouchStartY = 0;
+        const designViewport = designTrack.parentElement;
+
+        designViewport.addEventListener('touchstart', (e) => {
+            designTouchStartX = e.changedTouches[0].screenX;
+            designTouchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        designViewport.addEventListener('touchend', (e) => {
+            const diffX = e.changedTouches[0].screenX - designTouchStartX;
+            const diffY = e.changedTouches[0].screenY - designTouchStartY;
+
+            if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.2) {
+                if (diffX < 0) {
+                    activeDesignIndex++;
+                } else {
+                    activeDesignIndex--;
+                }
+                updateDesignCarouselState();
+            }
+        }, { passive: true });
+
         window.addEventListener('resize', () => {
             buildDesignDots();
             updateDesignCarouselState();
@@ -797,6 +821,29 @@
         videoPrev.addEventListener('click', () => goToVideoSlide(activeVideoIndex - 1));
         videoNext.addEventListener('click', () => goToVideoSlide(activeVideoIndex + 1));
 
+        // Touch Swipe para o carrossel de vídeos
+        let videoTouchStartX = 0;
+        let videoTouchStartY = 0;
+        const videoViewport = videoTrack.parentElement;
+
+        videoViewport.addEventListener('touchstart', (e) => {
+            videoTouchStartX = e.changedTouches[0].screenX;
+            videoTouchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        videoViewport.addEventListener('touchend', (e) => {
+            const diffX = e.changedTouches[0].screenX - videoTouchStartX;
+            const diffY = e.changedTouches[0].screenY - videoTouchStartY;
+
+            if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.2) {
+                if (diffX < 0) {
+                    goToVideoSlide(activeVideoIndex + 1);
+                } else {
+                    goToVideoSlide(activeVideoIndex - 1);
+                }
+            }
+        }, { passive: true });
+
         setTimeout(updateVideoCarouselState, 800);
 
         // ============================================
@@ -843,7 +890,8 @@
             renderLightboxState();
 
             designLightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.documentElement.classList.add('modal-open');
+            document.body.classList.add('modal-open');
         }
 
         function openRjLightbox() {
@@ -853,7 +901,8 @@
             renderLightboxState();
 
             designLightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            document.documentElement.classList.add('modal-open');
+            document.body.classList.add('modal-open');
         }
 
         function renderLightboxState() {
@@ -940,8 +989,8 @@
 
         function closeLightbox() {
             designLightbox.classList.remove('active');
-            document.body.style.overflow = '';
-            lightboxImageWrapper.classList.remove('is-zoomed');
+            document.documentElement.classList.remove('modal-open');
+            document.body.classList.remove('modal-open');
             currentLightboxProject = null;
             currentProjectIndex = null;
         }
@@ -961,6 +1010,38 @@
                 if (e.key === 'ArrowRight') nextLightboxImage();
             }
         });
+
+        // ============================================
+        // NAVEGAÇÃO POR TOQUE / DESLIZE (TOUCH SWIPE) NO CELULAR
+        // ============================================
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        lightboxViewArea.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        lightboxViewArea.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+
+            // Identificar deslize horizontal claro (mínimo 45px e mais horizontal que vertical)
+            if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+                if (diffX < 0) {
+                    // Deslizou para a esquerda -> próxima imagem
+                    nextLightboxImage();
+                } else {
+                    // Deslizou para a direita -> imagem anterior
+                    prevLightboxImage();
+                }
+            }
+        }, { passive: true });
     </script>
 </body>
 

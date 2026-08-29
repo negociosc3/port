@@ -1080,6 +1080,12 @@ footer {
     box-shadow: 0 4px 15px rgba(214, 36, 159, 0.3);
 }
 
+html.modal-open,
+body.modal-open {
+    overflow: hidden !important;
+    height: 100% !important;
+}
+
 /* ----------------------------------------------------
    LIGHTBOX / MODAL SYSTEM
 ---------------------------------------------------- */
