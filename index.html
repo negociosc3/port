@@ -206,7 +206,7 @@
                         <!-- Slide 2 -->
                         <div class="video-slide">
                             <div class="video-wrapper portrait">
-                                <video src="videos/Comunidade Violao Depois dos 40.mp4" controls preload="metadata"
+                                <video src="videos/Comunidade Violao Depois dos 40.mp4" controls preload="none"
                                     muted playsinline></video>
                             </div>
                             <div class="video-info-panel">
@@ -221,7 +221,7 @@
                         <!-- Slide 3 -->
                         <div class="video-slide">
                             <div class="video-wrapper portrait">
-                                <video src="videos/Zen Shiasu.mp4" controls preload="metadata" muted
+                                <video src="videos/Zen Shiasu.mp4" controls preload="none" muted
                                     playsinline></video>
                             </div>
                             <div class="video-info-panel">
@@ -235,7 +235,7 @@
                         <!-- Slide 4 -->
                         <div class="video-slide">
                             <div class="video-wrapper portrait">
-                                <video src="videos/VD 40.mp4" controls preload="metadata" muted playsinline></video>
+                                <video src="videos/VD 40.mp4" controls preload="none" muted playsinline></video>
                             </div>
                             <div class="video-info-panel">
                                 <span class="video-tag">Marketing / Anúncio</span>
@@ -248,7 +248,7 @@
                         <!-- Slide 5 -->
                         <div class="video-slide">
                             <div class="video-wrapper portrait">
-                                <video src="videos/biografandosucessos 2 Enuzia.mp4" controls preload="metadata" muted
+                                <video src="videos/biografandosucessos 2 Enuzia.mp4" controls preload="none" muted
                                     playsinline></video>
                             </div>
                             <div class="video-info-panel">
@@ -262,7 +262,7 @@
                         <!-- Slide 6 -->
                         <div class="video-slide">
                             <div class="video-wrapper">
-                                <video src="videos/App Cursa Vídeo.mp4" controls preload="metadata" muted
+                                <video src="videos/App Cursa Vídeo.mp4" controls preload="none" muted
                                     playsinline></video>
                             </div>
                             <div class="video-info-panel">
@@ -276,7 +276,7 @@
                         <!-- Slide 7 (Formato vertical "em pé") -->
                         <div class="video-slide">
                             <div class="video-wrapper portrait">
-                                <video src="videos/Corretora no Texas.mp4" controls preload="metadata" muted
+                                <video src="videos/Corretora no Texas.mp4" controls preload="none" muted
                                     playsinline></video>
                             </div>
                             <div class="video-info-panel">
@@ -446,13 +446,13 @@
                 </div>
             </div>
 
-            <!-- Bolinhas indicadoras no Lightbox quando houver carrossel/múltiplas fotos -->
-            <div class="carousel-dots lightbox-dots" id="lightboxDots" style="margin: 0 0 14px; min-height: 10px;">
-            </div>
-
             <div class="lightbox-meta">
                 <h3 id="lightboxTitle">Título</h3>
                 <p class="lightbox-desc" id="lightboxDesc">Descrição do projeto</p>
+            </div>
+
+            <!-- Bolinhas indicadoras no Lightbox (abaixo do bloco explicativo) -->
+            <div class="carousel-dots lightbox-dots" id="lightboxDots" style="margin-top: 14px; min-height: 10px;">
             </div>
         </div>
     </div>
@@ -1077,51 +1077,96 @@
         });
 
         // ============================================
-        // NAVEGAÇÃO POR TOQUE / DESLIZE (TOUCH SWIPE) NO CELULAR COM PROTEÇÃO DE ZOOM
+        // NAVEGAÇÃO POR TOQUE / DESLIZE (TOUCH SWIPE) NO CELULAR COM PROTEÇÃO TOTAL DE ZOOM
         // ============================================
-        let isLightboxPinching = false;
+        let lightboxTouchId = null;
         let lightboxTouchStartX = 0;
         let lightboxTouchStartY = 0;
+        let lightboxTouchStartTime = 0;
+        let lightboxWasMultiTouch = false;
+        let lightboxPinchCooldownUntil = 0;
 
         lightboxViewArea.addEventListener('touchstart', (e) => {
+            // Se houver mais de 1 dedo na tela, marca multi-touch imediatamente
             if (e.touches.length > 1) {
-                isLightboxPinching = true;
+                lightboxWasMultiTouch = true;
+                lightboxTouchId = null;
+                lightboxPinchCooldownUntil = Date.now() + 600;
                 return;
             }
-            isLightboxPinching = false;
-            lightboxTouchStartX = e.touches[0].clientX;
-            lightboxTouchStartY = e.touches[0].clientY;
+
+            // Se ainda estiver no cooldown de um zoom recente
+            if (Date.now() < lightboxPinchCooldownUntil) {
+                lightboxWasMultiTouch = true;
+                return;
+            }
+
+            // Apenas 1 dedo
+            lightboxWasMultiTouch = false;
+            const touch = e.touches[0];
+            lightboxTouchId = touch.identifier;
+            lightboxTouchStartX = touch.clientX;
+            lightboxTouchStartY = touch.clientY;
+            lightboxTouchStartTime = Date.now();
         }, { passive: true });
 
         lightboxViewArea.addEventListener('touchmove', (e) => {
             if (e.touches.length > 1) {
-                isLightboxPinching = true;
+                lightboxWasMultiTouch = true;
+                lightboxTouchId = null;
+                lightboxPinchCooldownUntil = Date.now() + 600;
             }
         }, { passive: true });
 
         lightboxViewArea.addEventListener('touchend', (e) => {
-            if (isLightboxPinching) {
-                isLightboxPinching = false;
+            // Se foi gesto de pinça ou se ainda estiver no cooldown de zoom, NUNCA passa foto
+            if (lightboxWasMultiTouch || Date.now() < lightboxPinchCooldownUntil) {
+                if (e.touches.length === 0) {
+                    lightboxWasMultiTouch = false;
+                }
                 return;
             }
+
+            // Se o usuário estiver com zoom ativo na tela (escala > 1.05), NUNCA passa foto
+            if (window.visualViewport && window.visualViewport.scale > 1.05) {
+                return;
+            }
+
+            // Se ainda restam dedos na tela, ignora
             if (e.touches.length > 0) return;
 
-            const touchEndX = e.changedTouches[0].clientX;
-            const touchEndY = e.changedTouches[0].clientY;
-
-            const diffX = touchEndX - lightboxTouchStartX;
-            const diffY = touchEndY - lightboxTouchStartY;
-
-            // Identificar deslize horizontal claro de 1 dedo (mínimo 50px e horizontal)
-            if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.6) {
-                if (diffX < 0) {
-                    // Deslizou para a esquerda -> próxima imagem
-                    nextLightboxImage();
-                } else {
-                    // Deslizou para a direita -> imagem anterior
-                    prevLightboxImage();
+            // Encontra o mesmo dedo exato que iniciou o toque
+            let matchingTouch = null;
+            for (let i = 0; i < e.changedTouches.length; i++) {
+                if (e.changedTouches[i].identifier === lightboxTouchId) {
+                    matchingTouch = e.changedTouches[i];
+                    break;
                 }
             }
+
+            if (!matchingTouch) return;
+
+            const touchEndX = matchingTouch.clientX;
+            const touchEndY = matchingTouch.clientY;
+            const diffX = touchEndX - lightboxTouchStartX;
+            const diffY = touchEndY - lightboxTouchStartY;
+            const duration = Date.now() - lightboxTouchStartTime;
+
+            // Só ativa se:
+            // 1. Duração for rápida (entre 60ms e 550ms)
+            // 2. Distância for no mínimo 55px
+            // 3. For estritamente horizontal (2x maior que vertical)
+            if (duration > 60 && duration < 550) {
+                if (Math.abs(diffX) > 55 && Math.abs(diffX) > Math.abs(diffY) * 2.0) {
+                    if (diffX < 0) {
+                        nextLightboxImage();
+                    } else {
+                        prevLightboxImage();
+                    }
+                }
+            }
+
+            lightboxTouchId = null;
         }, { passive: true });
     </script>
 </body>
