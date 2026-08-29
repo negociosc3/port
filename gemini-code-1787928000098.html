@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio | Designer Gráfico & Editor de Vídeo</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configuração do Design System -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+            },
+            surface: {
+              900: '#0b0f19',
+              800: '#111827',
+              700: '#1f2937',
+              600: '#374151',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Ícones (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-surface-900 text-slate-100 font-sans antialiased selection:bg-accent-500 selection:text-white">
+
+  <!-- ==================== HEADER / NAVEGAÇÃO ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface-900/85 backdrop-blur-md border-b border-surface-700/60">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-500 to-purple-600 flex items-center justify-center text-white font-black shadow-lg shadow-accent-500/20 group-hover:scale-105 transition-transform">
+          G
+        </div>
+        <div>
+          <span class="font-bold text-base text-white tracking-tight block">Gustavo Gabriel</span>
+          <span class="text-xs text-slate-400 block -mt-1">Designer & Video Editor</span>
+        </div>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#sobre" class="hover:text-accent-400 transition-colors">Sobre</a>
+        <a href="#videos" class="hover:text-accent-400 transition-colors">Vídeos</a>
+        <a href="#design" class="hover:text-accent-400 transition-colors">Design Gráfico</a>
+        <a href="#servicos" class="hover:text-accent-400 transition-colors">Serviços</a>
+      </nav>
+
+      <a href="#contato" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-semibold text-sm transition-all shadow-lg shadow-accent-500/25">
+        <i data-lucide="message-square" class="w-4 h-4"></i>
+        <span>Falar Comigo</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-800 border border-surface-700 text-xs font-medium text-accent-400 mb-8">
+          <span class="w-2 h-2 rounded-full bg-accent-400 animate-pulse"></span>
+          Disponível para novos projetos e freelas
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15]">
+          Criando narrativas visuais e designs de alto impacto.
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          Especialista em edição dinâmica de vídeo (Reels, YouTube, Comerciais) e identidade visual estratégica para marcas e criadores.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a href="#videos" class="px-8 py-4 rounded-xl bg-accent-500 hover:bg-accent-600 text-white font-bold text-sm transition-all shadow-xl shadow-accent-500/25 flex items-center gap-2">
+            <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+            Ver Edições de Vídeo
+          </a>
+          <a href="#design" class="px-8 py-4 rounded-xl bg-surface-800 hover:bg-surface-700 border border-surface-700 text-slate-200 font-semibold text-sm transition-all flex items-center gap-2">
+            <i data-lucide="image" class="w-4 h-4"></i>
+            Ver Artes Gráficas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SESSÃO: EDIÇÃO DE VÍDEO ==================== -->
+    <section id="videos" class="py-24 bg-surface-800/40 border-y border-surface-700/50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <div class="flex items-center gap-2 text-accent-400 text-xs font-bold uppercase tracking-widest mb-2">
+              <i data-lucide="film" class="w-4 h-4"></i>
+              Produção Audiovisual
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Projetos de Vídeo</h2>
+          </div>
+          <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+            Cortes dinâmicos, sound design, color grading e motion graphics para engajamento e retenção.
+          </p>
+        </div>
+
+        <!-- Grid de Vídeos -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Vídeo 1 (Horizontal / YouTube ou Comercial) -->
+          <div class="bg-surface-800 rounded-2xl border border-surface-700 overflow-hidden group hover:border-accent-500/50 transition-all">
+            <div class="aspect-video bg-black relative">
+              <video 
+                controls 
+                preload="metadata" 
+                poster="imagens/thumb-video1.jpg"
+                class="w-full h-full object-cover">
+                <source src="videos/video1.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+              </video>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-accent-500/10 text-accent-400">Comercial / Institucional</span>
+              <h3 class="text-lg font-bold text-white mt-3">Vídeo Comercial para Marca</h3>
+              <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                Edição com ritmo ágil, correção de cor cinematográfica e trilha sonora sincronizada.
+              </p>
+            </div>
+          </div>
+
+          <!-- Vídeo 2 (Horizontal / Conteúdo Longo) -->
+          <div class="bg-surface-800 rounded-2xl border border-surface-700 overflow-hidden group hover:border-accent-500/50 transition-all">
+            <div class="aspect-video bg-black relative">
+              <video 
+                controls 
+                preload="metadata" 
+                poster="imagens/thumb-video2.jpg"
+                class="w-full h-full object-cover">
+                <source src="videos/video2.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+              </video>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-accent-500/10 text-accent-400">YouTube / Documentário</span>
+              <h3 class="text-lg font-bold text-white mt-3">Edição para Canal de Alta Retenção</h3>
+              <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                Estruturação narrativa, animações de texto personalizadas e efeitos sonoros imersivos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Vídeo 3 (Vertical / Reels & TikTok) -->
+          <div class="bg-surface-800 rounded-2xl border border-surface-700 overflow-hidden group hover:border-accent-500/50 transition-all">
+            <div class="aspect-video bg-black relative flex items-center justify-center">
+              <video 
+                controls 
+                preload="metadata" 
+                poster="imagens/thumb-video3.jpg"
+                class="w-full h-full object-cover">
+                <source src="videos/reel1.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+              </video>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400">Shorts / Reels</span>
+              <h3 class="text-lg font-bold text-white mt-3">Cortes Virais com Legendas Dinâmicas</h3>
+              <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                Formato 9:16 com zoom in/out, emojis animados e gancho nos primeiros 3 segundos.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SESSÃO: DESIGN GRÁFICO ==================== -->
+    <section id="design" class="py-24 relative">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <div class="flex items-center gap-2 text-accent-400 text-xs font-bold uppercase tracking-widest mb-2">
+              <i data-lucide="palette" class="w-4 h-4"></i>
+              Identidade & Artes Visuais
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Galeria de Design</h2>
+          </div>
+          <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+            Thumbnails, posts para redes sociais, identidade visual e materiais promocionais.
+          </p>
+        </div>
+
+        <!-- Grid de Imagens -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Imagem 1: Thumbnail -->
+          <div class="group relative bg-surface-800 rounded-2xl border border-surface-700 overflow-hidden">
+            <div class="aspect-[16/9] overflow-hidden bg-surface-700">
+              <img 
+                src="imagens/design1.jpg" 
+                alt="Thumbnail para YouTube" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80'"
+              />
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-semibold text-accent-400 uppercase tracking-wider">Thumbnail</span>
+              <h3 class="text-base font-bold text-white mt-1">Criação de Thumbnail de Alto CTR</h3>
+              <p class="text-slate-400 text-xs mt-1">Design focado em psicologia de cliques e contraste.</p>
+            </div>
+          </div>
+
+          <!-- Imagem 2: Post Social Media -->
+          <div class="group relative bg-surface-800 rounded-2xl border border-surface-700 overflow-hidden">
+            <div class="aspect-[16/9] overflow-hidden bg-surface-700">
+              <img 
+                src="imagens/design2.jpg" 
+                alt="Artes para Instagram" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=80'"
+              />
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-semibold text-accent-400 uppercase tracking-wider">Social Media</span>
+              <h3 class="text-base font-bold text-white mt-1">Carrossel & Post para Redes Sociais</h3>
+              <p class="text-slate-400 text-xs mt-1">Layout elegante para autoridade e engajamento no Instagram.</p>
+            </div>
+          </div>
+
+          <!-- Imagem 3: Identidade Visual -->
+          <div class="group relative bg-surface-800 rounded-2xl border border-surface-700 overflow-hidden">
+            <div class="aspect-[16/9] overflow-hidden bg-surface-700">
+              <img 
+                src="imagens/design3.jpg" 
+                alt="Identidade Visual" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&q=80'"
+              />
+            </div>
+            <div class="p-5">
+              <span class="text-xs font-semibold text-accent-400 uppercase tracking-wider">Branding</span>
+              <h3 class="text-base font-bold text-white mt-1">Identidade Visual & Logotipo</h3>
+              <p class="text-slate-400 text-xs mt-1">Paleta de cores, tipografia e guia de estilo completo.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SESSÃO: SERVIÇOS & SKILLS ==================== -->
+    <section id="servicos" class="py-24 bg-surface-800/40 border-t border-surface-700/50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-xs font-bold uppercase tracking-widest text-accent-400 mb-3">Especialidades</h2>
+          <p class="text-3xl sm:text-4xl font-bold text-white tracking-tight">O que posso fazer pelo seu projeto</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-6 rounded-2xl bg-surface-800 border border-surface-700">
+            <i data-lucide="video" class="w-8 h-8 text-accent-400 mb-4"></i>
+            <h3 class="text-lg font-bold text-white mb-2">Edição de Vídeo</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Cortes precisos, sound effects e pacing dinâmico para reter público.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-800 border border-surface-700">
+            <i data-lucide="sparkles" class="w-8 h-8 text-accent-400 mb-4"></i>
+            <h3 class="text-lg font-bold text-white mb-2">Motion Graphics</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Textos animados, transições personalizadas e elementos visuais fluidos.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-800 border border-surface-700">
+            <i data-lucide="layout" class="w-8 h-8 text-accent-400 mb-4"></i>
+            <h3 class="text-lg font-bold text-white mb-2">Design para Web</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Banners, thumbnails de alta conversão e materiais digitais.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-surface-800 border border-surface-700">
+            <i data-lucide="wand-2" class="w-8 h-8 text-accent-400 mb-4"></i>
+            <h3 class="text-lg font-bold text-white mb-2">IA & Tratamento</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Upscaling, geração de cenários por IA e tratamento profissional de imagem.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTATO ==================== -->
+    <section id="contato" class="py-24 text-center relative overflow-hidden">
+      <div class="max-w-4xl mx-auto px-6 relative z-10">
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Vamos trabalhar juntos?</h2>
+        <p class="mt-4 text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+          Entre em contato direto pelo WhatsApp ou envie uma mensagem para orçamentos e parcerias.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5595999999999" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            Conversar no WhatsApp
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:contato@exemplo.com" class="px-8 py-4 rounded-xl bg-surface-800 hover:bg-surface-700 border border-surface-700 text-slate-200 font-semibold text-sm transition-all flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            Enviar E-mail
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-8 bg-surface-900 border-t border-surface-700/60 text-xs text-slate-500 text-center">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 Gustavo Gabriel. Todos os direitos reservados.</div>
+      <div class="flex gap-6">
+        <a href="#videos" class="hover:text-slate-300">Vídeos</a>
+        <a href="#design" class="hover:text-slate-300">Design</a>
+        <a href="#contato" class="hover:text-slate-300">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Inicialização dos ícones
+    lucide.createIcons();
+  </script>
+</body>
+</html>

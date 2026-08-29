@@ -1,605 +1,881 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel Almeida — Portfólio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap"
-        rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #0d0d0d;
-            color: #e0e0e0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-weight: 300;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        header {
-            padding: 80px 0 48px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2rem;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            color: #ffffff;
-        }
-
-        header p {
-            margin-top: 8px;
-            font-size: 0.95rem;
-            color: #888;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        section+section {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .section-title {
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #555;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-
-        /* ── Carrossel ── */
-        .carousel-wrap {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 500ms ease-out;
-            will-change: transform;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            padding: 0 8px;
-        }
-
-        .carousel-slide video {
-            width: 100%;
-            border-radius: 10px;
-            display: block;
-            background: #000;
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .carousel-slide .video-label {
-            margin-top: 12px;
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: #aaa;
-            text-align: center;
-            letter-spacing: 0.01em;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.07);
-            border: none;
-            color: #ccc;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            backdrop-filter: blur(4px);
-        }
-
-        .carousel-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .carousel-btn.prev {
-            left: 4px;
-        }
-
-        .carousel-btn.next {
-            right: 4px;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .carousel-dots button {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: none;
-            background: #333;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-
-        .carousel-dots button.is-active {
-            background: #e0e0e0;
-            transform: scale(1.3);
-        }
-
-        /* ── Seção 2 – Grid de sites ── */
-        .sites-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .site-card {
-            text-align: center;
-        }
-
-        .site-card .site-label {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: #aaa;
-            margin-bottom: 12px;
-        }
-
-        .site-thumb {
-            display: block;
-            max-width: 280px;
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid #222;
-            overflow: hidden;
-            transition: border-color 0.2s, opacity 0.2s;
-            cursor: pointer;
-        }
-
-        .site-thumb:hover {
-            border-color: #555;
-            opacity: 0.85;
-        }
-
-        .site-thumb img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* ── Modal ── */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s;
-            padding: 16px;
-        }
-
-        .modal-overlay.is-open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.6rem;
-            cursor: pointer;
-            z-index: 10;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.2s;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-scroll {
-            max-height: 80vh;
-            overflow-y: auto;
-            border-radius: 10px;
-            max-width: 95vw;
-        }
-
-        .modal-scroll img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .modal-buttons a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border: 1px solid #444;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: #e0e0e0;
-            transition: background 0.2s, border-color 0.2s;
-        }
-
-        .modal-buttons a:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #666;
-        }
-
-        .modal-buttons a img {
-            height: 20px;
-            width: auto;
-            display: block;
-        }
-
-        /* ── Footer ── */
-        footer {
-            padding: 40px 0 32px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #444;
-        }
-
-        @media (min-width: 768px) {
-            .carousel-slide {
-                flex: 0 0 50%;
-            }
-
-            header h1 {
-                font-size: 2.4rem;
-            }
-
-            .sites-grid {
-                flex-direction: row;
-                justify-content: center;
-                align-items: flex-start;
-                gap: 48px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .carousel-slide {
-                flex: 0 0 33.333%;
-            }
-        }
-    </style>
+    <title>Gabriel Almeida — Designer Gráfico | Vídeo & Web como serviços adicionais</title>
+    
+    <!-- Meta tags SEO -->
+    <meta name="description" content="Portfólio de Gabriel Almeida — Especialista em Design Gráfico & Visual com mais de 10 anos de experiência. Criação de identidades visuais, logos, peças publicitárias e branding, além de serviços complementares em edição de vídeo e criação de sites.">
+    
+    <!-- Estilo Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <h1>Gabriel Almeida</h1>
-            <p>Desenvolvimento web · Design · Front‑end</p>
+
+    <!-- ==================== HEADER ==================== -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <img src="gabriel_avatar.jpg" alt="Gabriel Almeida">
+                </div>
+                <div class="logo-text">
+                    <h3>Gabriel Almeida</h3>
+                    <p>Designer Gráfico</p>
+                </div>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link active">Sobre</a></li>
+                <li><a href="#design" class="nav-link" style="font-weight: 700; color: #fff;">Artes (Principal)</a></li>
+                <li><a href="#videos" class="nav-link" style="opacity: 0.85; font-size: 0.88rem;">Vídeos <span style="font-size: 0.7rem; opacity: 0.7; font-weight: 400; padding: 2px 6px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-left: 2px;">Extra</span></a></li>
+                <li><a href="#web" class="nav-link" style="opacity: 0.85; font-size: 0.88rem;">Websites <span style="font-size: 0.7rem; opacity: 0.7; font-weight: 400; padding: 2px 6px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-left: 2px;">Extra</span></a></li>
+                <li><a href="#contato" class="btn btn-secondary" style="padding: 8px 16px; border-radius: 10px;">Contato</a></li>
+            </ul>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Seção 1 – Carrossel de Vídeos -->
-    <section>
+    <!-- ==================== BLOCO 1: INTRO / SOBRE GABRIEL ==================== -->
+    <section class="hero-intro" id="inicio" style="padding: 120px 0 20px;">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="container" style="max-width: 900px; text-align: center; margin: 0 auto;">
+            <h1 style="font-size: 2.8rem; line-height: 1.2; margin-bottom: 8px;">Gabriel Almeida</h1>
+            <p style="font-size: 1.35rem; color: var(--accent-primary); font-weight: 700; margin-bottom: 0; font-family: var(--font-heading);">
+                Designer Gráfico
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== BLOCO 2: DESIGNS (CARROSSEL DE ARTES) ==================== -->
+    <section class="design-section" id="design" style="padding: 10px 0 35px; background: transparent;">
         <div class="container">
-            <h2 class="section-title">Projetos em vídeo</h2>
-            <div class="carousel-container">
-                <div class="carousel-wrap" id="carousel">
-                    <div class="carousel-track" id="carouselTrack"></div>
-                    <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior">‹</button>
-                    <button class="carousel-btn next" id="carouselNext" aria-label="Próximo">›</button>
+            <div class="carousel-outer">
+                <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Anterior"><i data-lucide="chevron-left"></i></button>
+                <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próximo"><i data-lucide="chevron-right"></i></button>
+                
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="designTrack">
+                        
+                        <!-- Cards gerados via JS dinamicamente no final para melhor organização -->
+                        
+                    </div>
                 </div>
-                <div class="carousel-dots" id="carouselDots"></div>
+                
+                <div class="carousel-dots" id="designDots"></div>
             </div>
         </div>
     </section>
 
-    <!-- Seção 2 – Exemplos de sites -->
-    <section>
+    <!-- ==================== BLOCO FERRAMENTAS QUE DOMINO ==================== -->
+    <section class="tools-section" style="padding: 10px 0 35px;">
         <div class="container">
-            <h2 class="section-title">Exemplos de criação de sites</h2>
-            <div class="sites-grid">
-                <!-- Apta Odonto -->
-                <div class="site-card">
-                    <div class="site-label">Site da Apta Odonto</div>
-                    <a href="./a/" class="site-thumb" target="_blank">
-                        <img src="./a.png" alt="Site Apta Odonto">
-                    </a>
-                </div>
-                <!-- RJ Andaimes -->
-                <div class="site-card">
-                    <div class="site-label">Site da RJ Andaimes</div>
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 24px; text-align: center; max-width: 580px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);">
+                <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 14px;">
+                    Ferramentas que domino
+                </p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+                    
+                    <!-- Photoshop -->
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(0, 30, 54, 0.5); border: 1px solid rgba(49, 168, 255, 0.3); border-radius: 12px; padding: 10px 20px;">
+                        <img src="imagens/photoshop.png" alt="Photoshop" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">Photoshop</span>
+                    </div>
 
-                    <div class="site-thumb" id="rjThumb">
-                        <img src="./rj.png" alt="Site RJ Andaimes">
+                    <!-- Corel Draw -->
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(21, 39, 24, 0.5); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 10px 20px;">
+                        <img src="imagens/corel.png" alt="Corel Draw" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">Corel Draw</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BLOCO 3: FOTO MINHA + BADGES ==================== -->
+    <section class="profile-card-section" style="padding: 10px 0 50px;">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="hero-card" style="padding: 26px 24px; max-width: 520px; width: 100%; text-align: center;">
+                <div class="hero-card-img" style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--accent-primary); margin: 0 auto 12px; overflow: hidden; box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);">
+                    <img src="gabriel_avatar.jpg" alt="Gabriel Almeida" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="font-size: 1.35rem; margin-bottom: 2px; color: #fff;">Gabriel Almeida</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                    <i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--accent-primary);"></i>
+                    Boa Vista, Roraima
+                </p>
+                
+                <p style="font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 auto 22px; max-width: 450px; text-align: center;">
+                    Faço criações com o computador desde os 10 anos de idade, já trabalhei com centenas de clientes, projetos... Gosto de artes limpas, minimalistas e que façam sentido com a mensagem que o cliente quer passar.
+                </p>
+                
+                <!-- Cards de estatísticas com hierarquia clara -->
+                <div class="hero-stats" style="padding-top: 18px; border-top: 1px solid var(--border-color); display: grid; grid-template-columns: 1.35fr 0.85fr 0.85fr; gap: 10px; align-items: stretch; text-align: center;">
+                    <!-- Card 1: Destaque Principal -->
+                    <div class="stat-item stat-featured" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.2) 100%); border: 1.5px solid var(--accent-primary); border-radius: 12px; padding: 12px 6px; box-shadow: 0 4px 18px rgba(99, 102, 241, 0.25); display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 1.35rem; color: #fff; font-weight: 800; line-height: 1.1;">10+ Anos</h4>
+                        <p style="font-size: 0.78rem; color: #fff; font-weight: 700; margin: 2px 0;">Designer Gráfico</p>
+                        <span style="font-size: 0.65rem; color: #34d399; font-weight: 700; letter-spacing: 0.02em;">★ FOCO PRINCIPAL</span>
+                    </div>
+                    
+                    <!-- Card 2: Secundário / Extra -->
+                    <div class="stat-item" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px; opacity: 0.8; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+ Anos</h4>
+                        <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Edição de Vídeo</p>
+                        <span style="font-size: 0.6rem; color: var(--text-dark); display: block;">Serviço Extra</span>
+                    </div>
+                    
+                    <!-- Card 3: Secundário / Extra -->
+                    <div class="stat-item" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px; opacity: 0.8; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+ Anos</h4>
+                        <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Criação de Sites</p>
+                        <span style="font-size: 0.6rem; color: var(--text-dark); display: block;">Serviço Extra</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal RJ Andaimes -->
-    <div class="modal-overlay" id="rjModal">
-        <button class="modal-close" id="rjModalClose" aria-label="Fechar">✕</button>
-
-        <div class="modal-scroll">
-            <img src="./rj.png" alt="Site RJ Andaimes">
-        </div>
-        <p style="color:#aaa;font-size:0.85rem;text-align:center;margin-top:16px;">O cliente tirou o site do ar, mas eu
-            guardei os prints 👇🏽</p>
-        <div class="modal-buttons">
-            <a href="./rjpc.png" download="rj-andaimes-desktop">
-                <img src="./rjpc.png" alt=""> Desktop
-            </a>
-            <a href="./rjcel.jpg" id="rjCelBtn" target="_blank">📱 Celular</a>
-        </div>
-    </div>
-
-    <footer>
+    <!-- ==================== PORTFOLIO: VIDEOS ==================== -->
+    <section class="videos-section" id="videos">
         <div class="container">
-            Gabriel Almeida &mdash; <span id="year"></span>
+            <div class="section-header" style="margin-bottom: 24px;">
+                <div class="badge" style="background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: rgba(255,255,255,0.12);">
+                    Serviço Adicional & Complementar
+                </div>
+                <h2>Edições de Vídeo</h2>
+                <p style="color: var(--accent-primary); font-weight: 600; margin-bottom: 6px; font-size: 1rem;">
+                    Além do design gráfico, também ofereço produção e edição de vídeos dinâmicos como serviço complementar.
+                </p>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">
+                    Arraste para o lado para ver mais vídeos
+                </p>
+            </div>
+            
+            <div class="carousel-outer">
+                <button class="nav-btn nav-btn-prev" id="videoPrev" aria-label="Vídeo Anterior"><i data-lucide="chevron-left"></i></button>
+                <button class="nav-btn nav-btn-next" id="videoNext" aria-label="Próximo Vídeo"><i data-lucide="chevron-right"></i></button>
+                
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="videoTrack">
+                        
+                        <!-- Slide 1 -->
+                        <div class="video-slide">
+                            <div class="video-wrapper portrait">
+                                <video src="videos/biografandosucessos Carol.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Social Media / Reels</span>
+                                <h3>Carol — Biografando Sucessos</h3>
+                                <p>Corte viral dinâmico para redes sociais com legendas sincronizadas e zoom in/out expressivo para prender a atenção.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="video-slide">
+                            <div class="video-wrapper portrait">
+                                <video src="videos/Comunidade Violao Depois dos 40.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Comunidade / Reels</span>
+                                <h3>Comunidade Violão Depois dos 40</h3>
+                                <p>A edição aqui é focada na mensagem direta sem enrolação, tela dividida com foco que tem a ver com o tema, legenda para prender a atenção (aliás, essa é a minha comunidade de violão!).</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="video-slide">
+                            <div class="video-wrapper portrait">
+                                <video src="videos/Zen Shiasu.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Comercial / Saúde</span>
+                                <h3>Zen Shiatsu</h3>
+                                <p>Edição elegante e fluida que transmite paz e profissionalismo, com color grading sutil e trilha sonora relaxante perfeitamente sincronizada.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="video-slide">
+                            <div class="video-wrapper portrait">
+                                <video src="videos/VD 40.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Marketing / Anúncio</span>
+                                <h3>VD 40 — Anúncio</h3>
+                                <p>Vídeo de anúncio de produto, inserções de imagens de apoio, motion e roteiro adaptado para público-alvo específico</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="video-slide">
+                            <div class="video-wrapper portrait">
+                                <video src="videos/biografandosucessos 2 Enuzia.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Redes Sociais</span>
+                                <h3>Enuzia — Biografando Sucessos</h3>
+                                <p>Criação de ganchos iniciais fortes (hooks), legendas e efeitos sonoros para maior retenção.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 6 -->
+                        <div class="video-slide">
+                            <div class="video-wrapper">
+                                <video src="videos/App Cursa Vídeo.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Tecnologia / App</span>
+                                <h3>App Cursa</h3>
+                                <p>Vídeo de demonstração de app no formato 16:9, com simulações de uso reais na tela, cortes focados nos benefícios do produto e ritmo educacional animado.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 7 (Formato vertical "em pé") -->
+                        <div class="video-slide">
+                            <div class="video-wrapper portrait">
+                                <video src="videos/Corretora no Texas.mp4" controls preload="metadata" muted playsinline></video>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag">Institucional / Imobiliário</span>
+                                <h3>Corretora no Texas</h3>
+                                <p>Vídeo comercial em formato vertical para redes sociais e captação de clientes no setor imobiliário internacional.</p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 8 (Vídeo Embedado do YouTube) -->
+                        <div class="video-slide">
+                            <div class="video-wrapper" style="border-radius: var(--radius-md); overflow: hidden; background: #000;">
+                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/pal9KxZllgM?start=14" title="Vídeo do Portfólio — YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border:none; width:100%; height:100%; display:block;"></iframe>
+                            </div>
+                            <div class="video-info-panel">
+                                <span class="video-tag" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">YouTube / Produção Audiovisual</span>
+                                <h3>Vídeo Institucional / Comercial</h3>
+                                <p>Produção e edição em formato 16:9 para YouTube, com cortes ritmados, tratamento de áudio e elementos gráficos integrados.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="carousel-dots" id="videoDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PORTFOLIO: WEBSITES (SERVIÇO COMPLEMENTAR) ==================== -->
+    <section class="web-section" id="web">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 24px;">
+                <div class="badge" style="background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: rgba(255,255,255,0.12);">
+                    Serviço Adicional & Complementar
+                </div>
+                <h2>Criação de Websites</h2>
+                <p style="color: var(--accent-primary); font-weight: 600; margin-bottom: 6px; font-size: 1rem;">
+                    Além do design visual, também desenvolvo sites completos e landing pages funcionais como serviço complementar.
+                </p>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">
+                    Sistemas responsivos focados em carregamento rápido, estética moderna e alta conversão.
+                </p>
+            </div>
+            
+            <div class="web-grid">
+                <!-- Apta Odonto -->
+                <div class="web-card">
+                    <div class="web-thumb">
+                        <img src="imagens/a.png" alt="Website Apta Odonto">
+                    </div>
+                    <div class="web-info">
+                        <h3>Apta Odonto</h3>
+                        <p>Website moderno desenvolvido para clínica odontológica. Conta com seções completas de serviços (urgência, implantes, harmonização, infantil), design refinado e navegação focada em agendamento de consultas pelo WhatsApp.</p>
+                        <div class="web-actions">
+                            <a href="site apta odonto/index.html" class="btn btn-primary" target="_blank" style="padding: 10px 18px; font-size: 0.85rem;">
+                                <i data-lucide="external-link"></i> Abrir Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RJ Andaimes -->
+                <div class="web-card">
+                    <div class="web-thumb">
+                        <img src="imagens/rj.png" alt="Website RJ Andaimes">
+                    </div>
+                    <div class="web-info">
+                        <h3>RJ Andaimes</h3>
+                        <p>Landing page corporativa para locação de andaimes e equipamentos de construção civil. Design robusto, carregamento instantâneo e layout focado em geração de orçamentos diretos para a empresa.</p>
+                        <div class="web-actions">
+                            <button class="btn btn-secondary" onclick="openRjLightbox()" style="padding: 10px 18px; font-size: 0.85rem;">
+                                <i data-lucide="image"></i> Ver Prints do Site
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-glow"></div>
+                <h2>Vamos trabalhar juntos?</h2>
+                <p>Estou pronto para criar designs visuais de alto impacto para sua marca ou empresa, além de contar com serviços adicionais de edição de vídeo e desenvolvimento web quando você precisar.</p>
+                
+                <div class="contact-actions">
+                    <a href="https://wa.me/5595984383225?text=Olá%20Gabriel,%20vi%20seu%20portfólio%20e%20gostaria%20de%20um%20orçamento." target="_blank" class="btn btn-white btn-whatsapp" style="padding: 12px 24px;">
+                        <i data-lucide="send"></i> Contratar Gabriel
+                    </a>
+                    <a href="mailto:suportegabriel7@gmail.com" class="btn btn-outline-white" style="padding: 12px 24px;">
+                        <i data-lucide="mail"></i> Enviar E-mail
+                    </a>
+                </div>
+                
+                <div class="contact-details" style="margin-top: 36px; padding-top: 24px;">
+                    <div class="contact-detail-item">
+                        <i data-lucide="map-pin"></i> Boa Vista — Roraima (RR)
+                    </div>
+                    <div class="contact-detail-item">
+                        <i data-lucide="phone-call"></i> (95) 98438-3225
+                    </div>
+                    <div class="contact-detail-item">
+                        <i data-lucide="instagram"></i> @gabrieldodesign
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; <span id="year"></span> Gabriel Almeida. Todos os direitos reservados.</p>
+            <div class="footer-socials">
+                <a href="https://wa.me/5595984383225" target="_blank" aria-label="WhatsApp"><i data-lucide="phone"></i></a>
+                <a href="mailto:suportegabriel7@gmail.com" aria-label="E-mail"><i data-lucide="mail"></i></a>
+                <a href="https://instagram.com/gabrieldodesign" target="_blank" aria-label="Instagram" class="footer-social-ig" title="Instagram @gabrieldodesign">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="igFooterGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#fdf497" />
+                                <stop offset="15%" stop-color="#fdf497" />
+                                <stop offset="45%" stop-color="#fd5949" />
+                                <stop offset="70%" stop-color="#d6249f" />
+                                <stop offset="100%" stop-color="#285AEB" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#igFooterGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="url(#igFooterGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="17.5" cy="6.5" r="1" fill="url(#igFooterGrad)"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- ==================== LIGHTBOX / MODALS ==================== -->
+    
+    <!-- Lightbox de Design Gráfico (Otimizado) -->
+    <div class="modal-overlay" id="designLightbox">
+        <button class="modal-close-btn" onclick="closeLightbox()"><i data-lucide="x"></i></button>
+        <div class="lightbox-main-container">
+            <div class="lightbox-view-area" id="lightboxViewArea">
+                <button class="lightbox-arrow lightbox-arrow-left" id="lightboxPrev" onclick="prevLightboxImage()">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <div class="lightbox-image-wrapper" id="lightboxImageWrapper">
+                    <img src="" id="lightboxImg" alt="Design ampliado">
+                </div>
+                <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" onclick="nextLightboxImage()">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+            <div class="lightbox-meta">
+                <h3>
+                    <span id="lightboxTitle">Título</span> 
+                    <span class="lightbox-counter" id="lightboxCounter">1 / 1</span>
+                </h3>
+                <p class="lightbox-desc" id="lightboxDesc">Descrição do projeto</p>
+            </div>
+        </div>
+    </div>
 
-        // ── Carrossel ──
-        const videos = [
-            { src: './biografandosucessos Carol.mp4', label: 'Carol — Biografando Sucessos' },
-            { src: './VD 40 2.mp4', label: 'VD 40' },
-            { src: './Zen Shiasu.mp4', label: 'Zen Shiasu' },
-            { src: './VD 40.mp4', label: 'VD 40 – Versão 1' },
-            { src: './biografandosucessos 2 Enuzia.mp4', label: 'Enuzia — Biografando Sucessos' },
-            { src: './App Cursa Vídeo.mp4', label: 'App Cursa' },
-            { src: './Corretora no Texas.mp4', label: 'Corretora no Texas' },
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // Projetos de Design Gráfico Agrupados (Reordenados conforme solicitação)
+        const projects = [
+            // 1. LOGOS NO INÍCIO
+            {
+                title: "Criação de Logotipo — Aura Divina",
+                tag: "Branding / Logotipos",
+                desc: "Logo minimalista desenhado com formas suaves de borboleta e tipografia refinada para e-commerce de moda feminina.",
+                images: ["imagens/2026-03-12_21-05-10_UTC.jpg"]
+            },
+            {
+                title: "Criação de Logotipo — MR Formaturas",
+                tag: "Branding / Logotipos",
+                desc: "Identidade visual corporativa elegante combinando elementos dourados, chapéu de formatura e louros da vitória.",
+                images: ["imagens/2026-03-12_20-32-26_UTC.jpg"]
+            },
+            {
+                title: "Criação de Logotipo — Doce Açaí",
+                tag: "Branding / Logotipos",
+                desc: "Design divertido de logotipo criado para uma gelateria gourmet com traços coloridos e visual atraente.",
+                images: ["imagens/2026-02-28_21-00-31_UTC.jpg"]
+            },
+            {
+                title: "Identidade Visual — Aluno Ouro 2025",
+                tag: "Branding / Eventos",
+                desc: "Marca oficial e selo tridimensional dourado desenvolvidos para premiação escolar anual.",
+                images: ["imagens/2026-02-28_20-59-21_UTC.jpg"]
+            },
+
+            // 2. CAMPANHA CARROSSEL COMO SEGUNDO
+            {
+                title: "Campanha de Carrossel — Regina 300",
+                tag: "Marketing Político / Feed",
+                desc: "Design de carrossel informativo criado para redes sociais na campanha para o Senado da candidata Regina 300.",
+                images: [
+                    "imagens/2026-08-17_13-21-26_UTC_10.jpg",
+                    "imagens/2026-08-17_13-21-26_UTC_3.jpg",
+                    "imagens/2026-08-17_13-21-26_UTC_7.jpg"
+                ]
+            },
+
+            // 3. DIVULGAÇÃO DO PODCAST
+            {
+                title: "Divulgação de Podcast — Roberta Acioly",
+                tag: "Marketing Político / Story",
+                desc: "Design de Story em formato vertical (9:16) desenvolvido para a divulgação do Podcast Orgulho de ser UERR com a participação da senadora Roberta Acioly.",
+                images: ["imagens/capa podcast UERR story  (4).png"]
+            },
+
+            // 4. CAPAS REELS
+            {
+                title: "Identidade de Conteúdo — Reels Cecília",
+                tag: "Social Media / Reels",
+                desc: "Coleção de capas minimalistas e refinadas para vídeos de Reels da Cecília, apresentando alta consistência visual, tipografia expressiva e contraste tonal.",
+                images: [
+                    "imagens/[2] Capas Cecília Reels [GABRIEL].png",
+                    "imagens/[2] Capas Cecília Reels [GABRIEL] (1).png",
+                    "imagens/[2] Capas Cecília Reels [GABRIEL] (2).png",
+                    "imagens/[2] Capas Cecília Reels [GABRIEL] (6).png",
+                    "imagens/[2] Capas Cecília Reels [GABRIEL] (7).png",
+                    "imagens/capa cec 4.png",
+                    "imagens/capa cec 6.png",
+                    "imagens/capa cec 11.png"
+                ]
+            },
+
+            // DEMAIS PROJETOS
+            {
+                title: "Figurinhas de WhatsApp — Regina 300",
+                tag: "Marketing Político / WhatsApp",
+                desc: "Conjunto de figurinhas (stickers) personalizadas e expressivas criadas para compartilhamento viral em grupos de WhatsApp na campanha para o Senado.",
+                images: ["imagens/1.png"]
+            },
+            {
+                title: "Campanha Conceitual — Roberta Acioly",
+                tag: "Marketing Político / Feed",
+                desc: "Post institucional para feed de redes sociais ('Minha missão é cuidar das pessoas') criado para a campanha da parlamentar Roberta Acioly.",
+                images: ["imagens/sofa6 copy.png"]
+            },
+            {
+                title: "Mega Banner Eleitoral — Roberta Acioly",
+                tag: "Marketing Político / OOH",
+                desc: "Design de banner impresso de grande formato para campanhas eleitorais urbanas com foco em alta definição e legibilidade.",
+                images: ["imagens/mega banner copy.png"]
+            },
+            {
+                title: "Retoque de Retratos e Tratamento de Pele",
+                tag: "Photoshop / Pós-Produção",
+                desc: "Trabalho detalhado de tratamento de imagem, luz, remoção de imperfeições da pele e pós-produção avançada em retratos corporativos no Photoshop.",
+                images: [
+                    "imagens/2026-08-27_15-47-47_UTC.jpg",
+                    "imagens/2026-08-08_20-27-50_UTC.jpg",
+                    "imagens/2026-03-12_21-07-33_UTC_1.jpg",
+                    "imagens/2026-03-12_21-07-33_UTC_2.jpg"
+                ]
+            },
+            {
+                title: "Mockups de Estampas — VA Camiseteria",
+                tag: "Modelagem / Vestuário",
+                desc: "Apresentação e simulação tridimensional realista de designs de camisetas prontas para produção física.",
+                images: ["imagens/2026-02-28_20-58-09_UTC.jpg"]
+            },
+            {
+                title: "Capa de E-Book — Jaque Torres",
+                tag: "Social Media / Infoprodutos",
+                desc: "Design promocional e capa conceitual com dicas de vendas de roupas online criada para Instagram.",
+                images: ["imagens/2026-02-28_20-13-40_UTC.jpg"]
+            },
+            {
+                title: "Apresentação Web — RJ Andaimes",
+                tag: "Social Media / Portfólio",
+                desc: "Mockup conceitual criado para apresentar o design e a estrutura de carregamento rápido da landing page RJ Andaimes.",
+                images: ["imagens/2026-03-02_18-21-42_UTC_1.jpg"]
+            }
         ];
 
-        const track = document.getElementById('carouselTrack');
-        const dotsContainer = document.getElementById('carouselDots');
-        const prevBtn = document.getElementById('carouselPrev');
-        const nextBtn = document.getElementById('carouselNext');
-
-        let slidesCount = videos.length;
-        let currentIndex = slidesCount;
-        let autoplayTimer = null;
-
-        function createSlide(v) {
-            const slide = document.createElement('div');
-            slide.className = 'carousel-slide';
-            slide.innerHTML = `
-                <video src="${v.src}" preload="metadata" muted loop playsinline controls></video>
-                <div class="video-label">${v.label}</div>
-            `;
-            return slide;
-        }
-
-        const clonesBefore = [];
-        const clonesAfter = [];
-        for (let i = 0; i < slidesCount; i++) {
-            clonesBefore.push(createSlide(videos[(slidesCount - 1 - i + slidesCount) % slidesCount]));
-        }
-        videos.forEach(v => track.appendChild(createSlide(v)));
-        for (let i = 0; i < slidesCount; i++) {
-            clonesAfter.push(createSlide(videos[i]));
-        }
-        clonesAfter.forEach(c => track.appendChild(c));
-        clonesBefore.reverse().forEach(c => track.prepend(c));
-        currentIndex = slidesCount;
-
-        for (let i = 0; i < slidesCount; i++) {
-            const dot = document.createElement('button');
-            dot.className = i === 0 ? 'is-active' : '';
-            dot.setAttribute('aria-label', `Slide ${i + 1}`);
-            dot.addEventListener('click', () => { goTo(i); restartAutoplay(); });
-            dotsContainer.appendChild(dot);
-        }
-
-        function getVisibleCount() {
-            return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
-        }
-
-        function goTo(index, smooth = true) {
-            currentIndex = index;
-            updateCarousel(smooth);
-        }
-
-        function updateCarousel(smooth = true) {
-            const slideWidth = track.querySelector('.carousel-slide').offsetWidth;
-            if (!slideWidth) return;
-            if (!smooth) {
-                track.style.transition = 'none';
+        // Inicializar Ícones Lucide
+        lucide.createIcons();
+        
+        // Ano dinâmico no footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Rolagem do Header e links ativos
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
             } else {
-                track.style.transition = 'transform 500ms ease-out';
+                header.classList.remove('scrolled');
             }
-            track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-            const dots = dotsContainer.querySelectorAll('button');
-            const realIndex = ((currentIndex - slidesCount) % slidesCount + slidesCount) % slidesCount;
-            dots.forEach((d, i) => d.classList.toggle('is-active', i === realIndex));
-            const allSlides = track.querySelectorAll('.carousel-slide');
-            allSlides.forEach((slide, i) => {
-                const video = slide.querySelector('video');
-                if (!video) return;
-                if (i === currentIndex) {
-                    video.play().catch(() => { });
-                } else {
-                    video.pause();
-                    video.currentTime = 0;
+            
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let currentActive = 'inicio';
+            
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 100;
+                const height = sec.offsetHeight;
+                if (window.scrollY >= top && window.scrollY < top + height) {
+                    currentActive = sec.getAttribute('id');
                 }
             });
-        }
-
-        function next() { goTo(currentIndex + 1); }
-
-        function prev() { goTo(currentIndex - 1); }
-
-        function handleLoop() {
-            const slideWidth = track.querySelector('.carousel-slide').offsetWidth;
-            const visible = getVisibleCount();
-            if (currentIndex >= slidesCount * 2 - visible) {
-                track.style.transition = 'none';
-                currentIndex = slidesCount;
-                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-                requestAnimationFrame(() => { track.style.transition = 'transform 500ms ease-out'; });
-            }
-            if (currentIndex < slidesCount - (slidesCount - visible)) {
-                track.style.transition = 'none';
-                currentIndex = slidesCount * 2 - visible - 1;
-                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-                requestAnimationFrame(() => { track.style.transition = 'transform 500ms ease-out'; });
-            }
-        }
-
-        function startAutoplay() {
-            stopAutoplay();
-            autoplayTimer = setInterval(() => { next(); }, 5000);
-        }
-
-        function stopAutoplay() { if (autoplayTimer) clearInterval(autoplayTimer); }
-
-        function restartAutoplay() { startAutoplay(); }
-
-        track.addEventListener('transitionend', handleLoop);
-        prevBtn.addEventListener('click', () => {
-            prev();
-            restartAutoplay();
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentActive}`) {
+                    link.classList.add('active');
+                }
+            });
         });
-        nextBtn.addEventListener('click', () => {
-            next();
-            restartAutoplay();
+        
+        // Menu de Navegação Mobile
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+        
+        // Fecha menu ao clicar em link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
         });
 
-        let resizeTimer;
+        // ============================================
+        // POPULAR E RENDERIZAR CARROSSEL DE ARTES
+        // ============================================
+        const designTrack = document.getElementById('designTrack');
+        
+        projects.forEach((proj, idx) => {
+            const slide = document.createElement('div');
+            slide.className = 'design-slide';
+            
+            // Badge indicador de carroséis com múltiplas fotos
+            const isCarousel = proj.images.length > 1;
+            const carouselBadge = isCarousel 
+                ? `<span style="position:absolute; top:12px; right:12px; z-index:5; background:rgba(7,9,14,0.85); padding:4px 8px; border-radius:12px; font-size:0.75rem; border:1px solid rgba(255,255,255,0.1); color:#fff; display:flex; align-items:center; gap:4px;"><i data-lucide="layers" style="width:12px; height:12px;"></i> 1/${proj.images.length}</span>` 
+                : '';
+                
+            slide.innerHTML = `
+                <div class="design-card" onclick="openProjectLightbox(${idx})">
+                    <div class="design-img-wrapper" style="position:relative;">
+                        ${carouselBadge}
+                        <img src="${proj.images[0]}" alt="${proj.title}">
+                    </div>
+                    <div class="design-card-info">
+                        <span class="design-card-tag">${proj.tag}</span>
+                        <h4>${proj.title}</h4>
+                    </div>
+                </div>
+            `;
+            designTrack.appendChild(slide);
+        });
+        lucide.createIcons(); // Atualiza ícones gerados no badge
+
+        // ============================================
+        // LOGICA DO CARROSSEL DE ARTES
+        // ============================================
+        const designPrev = document.getElementById('designPrev');
+        const designNext = document.getElementById('designNext');
+        const designDotsContainer = document.getElementById('designDots');
+        const designSlides = document.querySelectorAll('.design-slide');
+        
+        let activeDesignIndex = 0;
+        const totalDesigns = designSlides.length;
+        
+        function getVisibleDesignsCount() {
+            if (window.innerWidth <= 640) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+        
+        function buildDesignDots() {
+            designDotsContainer.innerHTML = '';
+            const visible = getVisibleDesignsCount();
+            const numDots = Math.max(1, totalDesigns - visible + 1);
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('button');
+                dot.className = `dot ${i === activeDesignIndex ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    activeDesignIndex = i;
+                    updateDesignCarouselState();
+                });
+                designDotsContainer.appendChild(dot);
+            }
+        }
+        
+        function updateDesignCarouselState() {
+            const visible = getVisibleDesignsCount();
+            const maxIdx = Math.max(0, totalDesigns - visible);
+            if (activeDesignIndex > maxIdx) {
+                activeDesignIndex = maxIdx;
+            }
+            if (activeDesignIndex < 0) activeDesignIndex = 0;
+            
+            const percent = (activeDesignIndex * 100) / visible;
+            designTrack.style.transform = `translateX(-${percent}%)`;
+            
+            const dots = designDotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeDesignIndex);
+            });
+        }
+        
+        designPrev.addEventListener('click', () => {
+            activeDesignIndex--;
+            updateDesignCarouselState();
+        });
+        
+        designNext.addEventListener('click', () => {
+            activeDesignIndex++;
+            updateDesignCarouselState();
+        });
+        
         window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                const visible = getVisibleCount();
-                if (currentIndex > slidesCount - visible) {
-                    goTo(slidesCount - visible);
-                } else {
-                    updateCarousel();
-                }
-            }, 150);
+            buildDesignDots();
+            updateDesignCarouselState();
         });
+        
+        buildDesignDots();
+        setTimeout(updateDesignCarouselState, 500);
 
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const wrap = document.getElementById('carousel');
-        wrap.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-        wrap.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchEndX - touchStartX;
-            if (Math.abs(diff) > 50) {
-                if (diff < 0) {
-                    next();
-                    restartAutoplay();
-                } else {
-                    prev();
-                    restartAutoplay();
+        // ============================================
+        // CARROSSEL DE VÍDEOS
+        // ============================================
+        const videoTrack = document.getElementById('videoTrack');
+        const videoSlides = document.querySelectorAll('.video-slide');
+        const videoPrev = document.getElementById('videoPrev');
+        const videoNext = document.getElementById('videoNext');
+        const videoDotsContainer = document.getElementById('videoDots');
+        
+        let activeVideoIndex = 0;
+        const totalVideos = videoSlides.length;
+        
+        for (let i = 0; i < totalVideos; i++) {
+            const dot = document.createElement('button');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToVideoSlide(i));
+            videoDotsContainer.appendChild(dot);
+        }
+        
+        const dots = videoDotsContainer.querySelectorAll('.dot');
+        
+        function updateVideoCarouselState() {
+            videoTrack.style.transform = `translateX(-${activeVideoIndex * 100}%)`;
+            
+            videoSlides.forEach((slide, idx) => {
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (idx === activeVideoIndex) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
                 }
-            }
-        }, { passive: true });
+            });
+            
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeVideoIndex);
+            });
+        }
+        
+        function goToVideoSlide(index) {
+            activeVideoIndex = (index + totalVideos) % totalVideos;
+            updateVideoCarouselState();
+        }
+        
+        videoPrev.addEventListener('click', () => goToVideoSlide(activeVideoIndex - 1));
+        videoNext.addEventListener('click', () => goToVideoSlide(activeVideoIndex + 1));
+        
+        setTimeout(updateVideoCarouselState, 800);
 
-        wrap.addEventListener('mouseenter', stopAutoplay);
-        wrap.addEventListener('mouseleave', startAutoplay);
+        // ============================================
+        // SISTEMA DE LIGHTBOX (ARTES E PRINTS DE SITES)
+        // ============================================
+        const designLightbox = document.getElementById('designLightbox');
+        const lightboxViewArea = document.getElementById('lightboxViewArea');
+        const lightboxImageWrapper = document.getElementById('lightboxImageWrapper');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDesc = document.getElementById('lightboxDesc');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        
+        const rjWebsiteData = {
+            title: "Website RJ Andaimes",
+            items: [
+                {
+                    title: "RJ Andaimes — Desktop",
+                    desc: "",
+                    src: "imagens/rjpc.png",
+                    isScrollable: true,
+                    maxWidth: "960px"
+                },
+                {
+                    title: "RJ Andaimes — Mobile",
+                    desc: "",
+                    src: "imagens/rjcel.jpg",
+                    isScrollable: true,
+                    maxWidth: "380px"
+                }
+            ]
+        };
 
-        updateCarousel(false);
-        startAutoplay();
-
-        // ── Modal RJ ──
-        const rjThumb = document.getElementById('rjThumb');
-        const rjModal = document.getElementById('rjModal');
-        const rjModalClose = document.getElementById('rjModalClose');
-
-        function openModal() {
-            rjModal.classList.add('is-open');
+        let currentLightboxProject = null;
+        let openImgIdx = 0;
+        
+        function openProjectLightbox(projIdx) {
+            currentLightboxProject = projects[projIdx];
+            openImgIdx = 0;
+            renderLightboxState();
+            
+            designLightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
-            history.pushState({ modal: 'rj' }, '');
         }
 
-        function closeModal() {
-            rjModal.classList.remove('is-open');
+        function openRjLightbox() {
+            currentLightboxProject = rjWebsiteData;
+            openImgIdx = 0;
+            renderLightboxState();
+            
+            designLightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function renderLightboxState() {
+            if (!currentLightboxProject) return;
+            const project = currentLightboxProject;
+            
+            const isCustomItems = Array.isArray(project.items);
+            const totalImgs = isCustomItems ? project.items.length : project.images.length;
+            
+            if (isCustomItems) {
+                const currentItem = project.items[openImgIdx];
+                lightboxImg.src = currentItem.src;
+                lightboxTitle.textContent = currentItem.title;
+                lightboxDesc.textContent = currentItem.desc || '';
+                lightboxDesc.style.display = currentItem.desc ? 'block' : 'none';
+                
+                if (currentItem.isScrollable) {
+                    lightboxViewArea.classList.add('scrollable-view');
+                    lightboxImageWrapper.classList.add('scrollable-wrapper');
+                    lightboxImageWrapper.style.maxWidth = currentItem.maxWidth || '960px';
+                } else {
+                    lightboxViewArea.classList.remove('scrollable-view');
+                    lightboxImageWrapper.classList.remove('scrollable-wrapper');
+                    lightboxImageWrapper.style.maxWidth = '';
+                }
+            } else {
+                lightboxImg.src = project.images[openImgIdx];
+                lightboxTitle.textContent = project.title;
+                lightboxDesc.textContent = project.desc || '';
+                lightboxDesc.style.display = project.desc ? 'block' : 'none';
+                lightboxViewArea.classList.remove('scrollable-view');
+                lightboxImageWrapper.classList.remove('scrollable-wrapper');
+                lightboxImageWrapper.style.maxWidth = '';
+            }
+            
+            // Retorna o scroll para o topo a cada troca de imagem
+            lightboxImageWrapper.scrollTop = 0;
+            
+            // Contador
+            lightboxCounter.textContent = `${openImgIdx + 1} / ${totalImgs}`;
+            
+            // Exibir setas apenas se houver mais de uma imagem no projeto
+            if (totalImgs > 1) {
+                lightboxPrev.style.display = 'flex';
+                lightboxNext.style.display = 'flex';
+            } else {
+                lightboxPrev.style.display = 'none';
+                lightboxNext.style.display = 'none';
+            }
+        }
+        
+        function prevLightboxImage() {
+            if (!currentLightboxProject) return;
+            const project = currentLightboxProject;
+            const total = Array.isArray(project.items) ? project.items.length : project.images.length;
+            openImgIdx = (openImgIdx - 1 + total) % total;
+            renderLightboxState();
+        }
+        
+        function nextLightboxImage() {
+            if (!currentLightboxProject) return;
+            const project = currentLightboxProject;
+            const total = Array.isArray(project.items) ? project.items.length : project.images.length;
+            openImgIdx = (openImgIdx + 1) % total;
+            renderLightboxState();
+        }
+        
+        function closeLightbox() {
+            designLightbox.classList.remove('active');
             document.body.style.overflow = '';
+            currentLightboxProject = null;
         }
-
-        rjThumb.addEventListener('click', openModal);
-        rjModalClose.addEventListener('click', closeModal);
-
-        rjModal.addEventListener('click', (e) => {
-            if (e.target === rjModal) closeModal();
-        });
-
-        // Fecha com botão voltar
-        window.addEventListener('popstate', (e) => {
-            if (rjModal.classList.contains('is-open')) {
-                closeModal();
+        
+        // Fechar ao clicar fora
+        designLightbox.addEventListener('click', (e) => {
+            if (e.target === designLightbox || e.target.classList.contains('lightbox-view-area') || e.target.classList.contains('lightbox-main-container')) {
+                closeLightbox();
             }
         });
 
-
+        // Fechar com tecla ESC e navegar com setas do teclado
+        document.addEventListener('keydown', (e) => {
+            if (designLightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+            }
+        });
     </script>
 </body>
-
 </html>
