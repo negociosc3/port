@@ -707,21 +707,39 @@
             });
         }
 
-        // Touch Swipe para o carrossel de designs/artes
+        // Touch Swipe para o carrossel de designs/artes (com proteção de zoom)
+        let isDesignPinching = false;
         let designTouchStartX = 0;
         let designTouchStartY = 0;
         const designViewport = designTrack.parentElement;
 
         designViewport.addEventListener('touchstart', (e) => {
-            designTouchStartX = e.changedTouches[0].screenX;
-            designTouchStartY = e.changedTouches[0].screenY;
+            if (e.touches.length > 1) {
+                isDesignPinching = true;
+                return;
+            }
+            isDesignPinching = false;
+            designTouchStartX = e.touches[0].clientX;
+            designTouchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        designViewport.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 1) {
+                isDesignPinching = true;
+            }
         }, { passive: true });
 
         designViewport.addEventListener('touchend', (e) => {
-            const diffX = e.changedTouches[0].screenX - designTouchStartX;
-            const diffY = e.changedTouches[0].screenY - designTouchStartY;
+            if (isDesignPinching) {
+                isDesignPinching = false;
+                return;
+            }
+            if (e.touches.length > 0) return;
 
-            if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.2) {
+            const diffX = e.changedTouches[0].clientX - designTouchStartX;
+            const diffY = e.changedTouches[0].clientY - designTouchStartY;
+
+            if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
                 if (diffX < 0) {
                     activeDesignIndex++;
                 } else {
@@ -783,21 +801,39 @@
             updateVideoCarouselState();
         }
 
-        // Touch Swipe para o carrossel de vídeos
+        // Touch Swipe para o carrossel de vídeos (com proteção de zoom)
+        let isVideoPinching = false;
         let videoTouchStartX = 0;
         let videoTouchStartY = 0;
         const videoViewport = videoTrack.parentElement;
 
         videoViewport.addEventListener('touchstart', (e) => {
-            videoTouchStartX = e.changedTouches[0].screenX;
-            videoTouchStartY = e.changedTouches[0].screenY;
+            if (e.touches.length > 1) {
+                isVideoPinching = true;
+                return;
+            }
+            isVideoPinching = false;
+            videoTouchStartX = e.touches[0].clientX;
+            videoTouchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        videoViewport.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 1) {
+                isVideoPinching = true;
+            }
         }, { passive: true });
 
         videoViewport.addEventListener('touchend', (e) => {
-            const diffX = e.changedTouches[0].screenX - videoTouchStartX;
-            const diffY = e.changedTouches[0].screenY - videoTouchStartY;
+            if (isVideoPinching) {
+                isVideoPinching = false;
+                return;
+            }
+            if (e.touches.length > 0) return;
 
-            if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.2) {
+            const diffX = e.changedTouches[0].clientX - videoTouchStartX;
+            const diffY = e.changedTouches[0].clientY - videoTouchStartY;
+
+            if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
                 if (diffX < 0) {
                     goToVideoSlide(activeVideoIndex + 1);
                 } else {
@@ -843,11 +879,21 @@
         let currentLightboxProject = null;
         let openImgIdx = 0;
 
+        function preloadProjectImages(project) {
+            if (!project) return;
+            const imgs = Array.isArray(project.items) ? project.items.map(i => i.src) : project.images;
+            if (imgs && imgs.length > 0) {
+                imgs.forEach(src => {
+                    const preloadImg = new Image();
+                    preloadImg.src = src;
+                });
+            }
+        }
+
         function openProjectLightbox(projIdx) {
             currentProjectIndex = projIdx;
             currentLightboxProject = projects[projIdx];
             openImgIdx = 0;
-            lightboxImg.src = '';
             renderLightboxState();
 
             const wasActive = designLightbox.classList.contains('active');
@@ -866,7 +912,6 @@
             currentProjectIndex = null;
             currentLightboxProject = rjWebsiteData;
             openImgIdx = 0;
-            lightboxImg.src = '';
             renderLightboxState();
 
             const wasActive = designLightbox.classList.contains('active');
@@ -929,6 +974,13 @@
                 }
             } else {
                 lightboxDots.style.display = 'none';
+            }
+
+            // Pré-carregamento automático em segundo plano
+            preloadProjectImages(currentLightboxProject);
+            if (currentProjectIndex !== null) {
+                const nextProj = projects[(currentProjectIndex + 1) % projects.length];
+                preloadProjectImages(nextProj);
             }
 
             // Retorna o scroll para o topo a cada troca de imagem
@@ -1025,27 +1077,43 @@
         });
 
         // ============================================
-        // NAVEGAÇÃO POR TOQUE / DESLIZE (TOUCH SWIPE) NO CELULAR
+        // NAVEGAÇÃO POR TOQUE / DESLIZE (TOUCH SWIPE) NO CELULAR COM PROTEÇÃO DE ZOOM
         // ============================================
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let touchEndY = 0;
+        let isLightboxPinching = false;
+        let lightboxTouchStartX = 0;
+        let lightboxTouchStartY = 0;
 
         lightboxViewArea.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
+            if (e.touches.length > 1) {
+                isLightboxPinching = true;
+                return;
+            }
+            isLightboxPinching = false;
+            lightboxTouchStartX = e.touches[0].clientX;
+            lightboxTouchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        lightboxViewArea.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 1) {
+                isLightboxPinching = true;
+            }
         }, { passive: true });
 
         lightboxViewArea.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
+            if (isLightboxPinching) {
+                isLightboxPinching = false;
+                return;
+            }
+            if (e.touches.length > 0) return;
 
-            const diffX = touchEndX - touchStartX;
-            const diffY = touchEndY - touchStartY;
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
 
-            // Identificar deslize horizontal claro (mínimo 45px e mais horizontal que vertical)
-            if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+            const diffX = touchEndX - lightboxTouchStartX;
+            const diffY = touchEndY - lightboxTouchStartY;
+
+            // Identificar deslize horizontal claro de 1 dedo (mínimo 50px e horizontal)
+            if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.6) {
                 if (diffX < 0) {
                     // Deslizou para a esquerda -> próxima imagem
                     nextLightboxImage();

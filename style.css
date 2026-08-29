@@ -916,8 +916,15 @@ header .nav-container {
     transition: transform var(--transition-smooth);
 }
 
-.design-card:hover .design-img-wrapper img {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .design-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--border-hover);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .design-card:hover .design-img-wrapper img {
+        transform: scale(1.05);
+    }
 }
 
 .design-card-info {
