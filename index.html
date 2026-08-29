@@ -646,7 +646,7 @@
                 <div class="design-card" onclick="openProjectLightbox(${idx})">
                     <div class="design-img-wrapper" style="position:relative;">
                         ${carouselBadge}
-                        <img src="${proj.images[0]}" alt="${proj.title}">
+                        <img src="${proj.images[0]}" alt="${proj.title}" loading="lazy" decoding="async">
                     </div>
                     <div class="design-card-info">
                         <span class="design-card-tag">${proj.tag}</span>
@@ -656,7 +656,7 @@
             `;
             designTrack.appendChild(slide);
         });
-        lucide.createIcons(); // Atualiza ícones gerados no badge
+        lucide.createIcons();
 
         // ============================================
         // LOGICA DO CARROSSEL DE ARTES
@@ -847,6 +847,7 @@
             currentProjectIndex = projIdx;
             currentLightboxProject = projects[projIdx];
             openImgIdx = 0;
+            lightboxImg.src = '';
             renderLightboxState();
 
             const wasActive = designLightbox.classList.contains('active');
@@ -865,6 +866,7 @@
             currentProjectIndex = null;
             currentLightboxProject = rjWebsiteData;
             openImgIdx = 0;
+            lightboxImg.src = '';
             renderLightboxState();
 
             const wasActive = designLightbox.classList.contains('active');
@@ -981,8 +983,12 @@
             designLightbox.classList.remove('active');
             document.documentElement.classList.remove('modal-open');
             document.body.classList.remove('modal-open');
+            lightboxImg.src = '';
+            lightboxTitle.textContent = '';
+            lightboxDesc.textContent = '';
             currentLightboxProject = null;
             currentProjectIndex = null;
+            openImgIdx = 0;
         }
 
         // Fechar pelo botão X, clique fora ou tecla ESC

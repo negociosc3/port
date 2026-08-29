@@ -1204,7 +1204,6 @@ body.modal-open {
     justify-content: center;
     position: relative;
     touch-action: pan-y pinch-zoom;
-    transition: all 0.3s ease;
 }
 
 .lightbox-image-wrapper img {
@@ -1216,6 +1215,7 @@ body.modal-open {
     border: 1px solid rgba(255, 255, 255, 0.05);
     display: block;
     touch-action: pan-y pinch-zoom;
+    image-rendering: auto;
 }
 
 .lightbox-image-wrapper.scrollable-wrapper {
