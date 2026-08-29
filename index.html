@@ -67,11 +67,6 @@
         <section class="design-section" id="design" style="padding: 10px 0 45px; background: transparent;">
             <div class="container">
                 <div class="carousel-outer">
-                    <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Anterior"><i
-                            data-lucide="chevron-left"></i></button>
-                    <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próximo"><i
-                            data-lucide="chevron-right"></i></button>
-
                     <div class="carousel-viewport">
                         <div class="carousel-track" id="designTrack">
 
@@ -194,11 +189,6 @@
             </div>
 
             <div class="carousel-outer">
-                <button class="nav-btn nav-btn-prev" id="videoPrev" aria-label="Vídeo Anterior"><i
-                        data-lucide="chevron-left"></i></button>
-                <button class="nav-btn nav-btn-next" id="videoNext" aria-label="Próximo Vídeo"><i
-                        data-lucide="chevron-right"></i></button>
-
                 <div class="carousel-viewport">
                     <div class="carousel-track" id="videoTrack">
 
@@ -452,21 +442,19 @@
 
     <!-- ==================== LIGHTBOX / MODALS ==================== -->
 
-    <!-- Lightbox de Design Gráfico (Otimizado) -->
+    <!-- Lightbox de Design Gráfico & Prints de Sites -->
     <div class="modal-overlay" id="designLightbox">
         <button class="modal-close-btn" onclick="closeLightbox()"><i data-lucide="x"></i></button>
         <div class="lightbox-main-container">
             <div class="lightbox-view-area" id="lightboxViewArea">
-                <button class="lightbox-arrow lightbox-arrow-left" id="lightboxPrev" onclick="prevLightboxImage()">
-                    <i data-lucide="chevron-left"></i>
-                </button>
                 <div class="lightbox-image-wrapper" id="lightboxImageWrapper">
                     <img src="" id="lightboxImg" alt="Design ampliado">
                 </div>
-                <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" onclick="nextLightboxImage()">
-                    <i data-lucide="chevron-right"></i>
-                </button>
             </div>
+
+            <!-- Bolinhas indicadoras no Lightbox quando houver carrossel/múltiplas fotos -->
+            <div class="carousel-dots lightbox-dots" id="lightboxDots" style="margin: 0 0 14px; min-height: 10px;"></div>
+
             <div class="lightbox-meta">
                 <h3 id="lightboxTitle">Título</h3>
                 <p class="lightbox-desc" id="lightboxDesc">Descrição do projeto</p>
@@ -724,16 +712,6 @@
             });
         }
 
-        designPrev.addEventListener('click', () => {
-            activeDesignIndex--;
-            updateDesignCarouselState();
-        });
-
-        designNext.addEventListener('click', () => {
-            activeDesignIndex++;
-            updateDesignCarouselState();
-        });
-
         // Touch Swipe para o carrossel de designs/artes
         let designTouchStartX = 0;
         let designTouchStartY = 0;
@@ -771,8 +749,6 @@
         // ============================================
         const videoTrack = document.getElementById('videoTrack');
         const videoSlides = document.querySelectorAll('.video-slide');
-        const videoPrev = document.getElementById('videoPrev');
-        const videoNext = document.getElementById('videoNext');
         const videoDotsContainer = document.getElementById('videoDots');
 
         let activeVideoIndex = 0;
@@ -812,9 +788,6 @@
             updateVideoCarouselState();
         }
 
-        videoPrev.addEventListener('click', () => goToVideoSlide(activeVideoIndex - 1));
-        videoNext.addEventListener('click', () => goToVideoSlide(activeVideoIndex + 1));
-
         // Touch Swipe para o carrossel de vídeos
         let videoTouchStartX = 0;
         let videoTouchStartY = 0;
@@ -847,11 +820,9 @@
         const lightboxViewArea = document.getElementById('lightboxViewArea');
         const lightboxImageWrapper = document.getElementById('lightboxImageWrapper');
         const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxDots = document.getElementById('lightboxDots');
         const lightboxTitle = document.getElementById('lightboxTitle');
         const lightboxDesc = document.getElementById('lightboxDesc');
-
-        const lightboxPrev = document.getElementById('lightboxPrev');
-        const lightboxNext = document.getElementById('lightboxNext');
 
         const rjWebsiteData = {
             title: "Website RJ Andaimes",
@@ -904,6 +875,7 @@
             const project = currentLightboxProject;
 
             const isCustomItems = Array.isArray(project.items);
+            const totalImgs = isCustomItems ? project.items.length : project.images.length;
 
             if (isCustomItems) {
                 const currentItem = project.items[openImgIdx];
@@ -931,11 +903,25 @@
                 lightboxImageWrapper.style.maxWidth = '';
             }
 
+            // Gerar e atualizar as bolinhas indicadoras do Lightbox
+            lightboxDots.innerHTML = '';
+            if (totalImgs > 1) {
+                lightboxDots.style.display = 'flex';
+                for (let i = 0; i < totalImgs; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `dot ${i === openImgIdx ? 'active' : ''}`;
+                    dot.addEventListener('click', () => {
+                        openImgIdx = i;
+                        renderLightboxState();
+                    });
+                    lightboxDots.appendChild(dot);
+                }
+            } else {
+                lightboxDots.style.display = 'none';
+            }
+
             // Retorna o scroll para o topo a cada troca de imagem
             lightboxImageWrapper.scrollTop = 0;
-
-            lightboxPrev.style.display = 'flex';
-            lightboxNext.style.display = 'flex';
         }
 
         // Navegação normal e fluida através das setas nativas

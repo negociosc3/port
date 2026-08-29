@@ -738,6 +738,32 @@ header .nav-container {
     border-radius: 5px;
 }
 
+.carousel-dots.lightbox-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 16px;
+    z-index: 10002;
+}
+
+.carousel-dots.lightbox-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.carousel-dots.lightbox-dots .dot.active {
+    background: var(--accent-primary);
+    width: 24px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
 /* ----------------------------------------------------
    PORTFOLIO: WEB SITES
 ---------------------------------------------------- */
