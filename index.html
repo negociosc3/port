@@ -67,6 +67,9 @@
         <section class="design-section" id="design" style="padding: 10px 0 45px; background: transparent;">
             <div class="container">
                 <div class="carousel-outer">
+                    <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Arte Anterior">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
                     <div class="carousel-viewport">
                         <div class="carousel-track" id="designTrack">
 
@@ -74,6 +77,9 @@
 
                         </div>
                     </div>
+                    <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próxima Arte">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
 
                     <div class="carousel-dots" id="designDots"></div>
                 </div>
@@ -186,6 +192,9 @@
             </div>
 
             <div class="carousel-outer">
+                <button class="nav-btn nav-btn-prev" id="videoPrev" aria-label="Vídeo Anterior">
+                    <i data-lucide="chevron-left"></i>
+                </button>
                 <div class="carousel-viewport">
                     <div class="carousel-track" id="videoTrack">
 
@@ -310,6 +319,9 @@
 
                     </div>
                 </div>
+                <button class="nav-btn nav-btn-next" id="videoNext" aria-label="Próximo Vídeo">
+                    <i data-lucide="chevron-right"></i>
+                </button>
 
                 <div class="carousel-dots" id="videoDots"></div>
             </div>
@@ -675,6 +687,23 @@
             return 3;
         }
 
+        if (designPrev && designNext) {
+            designPrev.addEventListener('click', () => {
+                if (activeDesignIndex > 0) {
+                    activeDesignIndex--;
+                    updateDesignCarouselState();
+                }
+            });
+            designNext.addEventListener('click', () => {
+                const visible = getVisibleDesignsCount();
+                const maxIdx = Math.max(0, totalDesigns - visible);
+                if (activeDesignIndex < maxIdx) {
+                    activeDesignIndex++;
+                    updateDesignCarouselState();
+                }
+            });
+        }
+
         function buildDesignDots() {
             designDotsContainer.innerHTML = '';
             const visible = getVisibleDesignsCount();
@@ -799,6 +828,17 @@
         function goToVideoSlide(index) {
             activeVideoIndex = (index + totalVideos) % totalVideos;
             updateVideoCarouselState();
+        }
+
+        const videoPrev = document.getElementById('videoPrev');
+        const videoNext = document.getElementById('videoNext');
+        if (videoPrev && videoNext) {
+            videoPrev.addEventListener('click', () => {
+                goToVideoSlide(activeVideoIndex - 1);
+            });
+            videoNext.addEventListener('click', () => {
+                goToVideoSlide(activeVideoIndex + 1);
+            });
         }
 
         // Touch Swipe para o carrossel de vídeos (com proteção de zoom)

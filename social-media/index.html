@@ -3,41 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Gabriel Almeida — Designer Gráfico | Vídeo & Web como serviços adicionais</title>
-
-    <!-- Meta tags SEO -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Gabriel Almeida — Criação de Vídeos, Social Media & Gestão de Comunidades</title>
     <meta name="description"
-        content="Portfólio de Gabriel Almeida — Especialista em Design Gráfico & Visual com mais de 10 anos de experiência. Criação de identidades visuais, logos, peças publicitárias e branding, além de serviços complementares em edição de vídeo e criação de sites.">
+        content="Portfólio de Gabriel Almeida: Especialista em Criação e Edição de Vídeos de Alta Retenção, Gestão Estratégica de Redes Sociais e Construção de Comunidades Online.">
 
-    <!-- Estilo Principal -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
 
-    <!-- Ícones Lucide -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <!-- ==================== HEADER ==================== -->
     <header id="header">
-        <div class="container nav-container">
+        <div class="container header-container">
             <a href="#" class="logo">
-                <div class="logo-icon">
-                    <img src="../gabriel_avatar.jpg" alt="Gabriel Almeida">
-                </div>
+                <div class="logo-badge">GA</div>
                 <div class="logo-text">
                     <h3>Gabriel Almeida</h3>
-                    <p>Designer Gráfico</p>
+                    <p>Vídeos & Social Media</p>
                 </div>
             </a>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio" class="nav-link active">Sobre</a></li>
-                <li><a href="#design" class="nav-link" style="font-weight: 700; color: #fff;">Artes (Principal)</a></li>
-                <li><a href="#videos" class="nav-link" style="opacity: 0.85; font-size: 0.88rem;">Vídeos <span
-                            style="font-size: 0.7rem; opacity: 0.7; font-weight: 400; padding: 2px 6px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-left: 2px;">Extra</span></a>
-                </li>
+                <li><a href="#videos" class="nav-link active" style="font-weight: 700; color: #fff;">Vídeos (Principal)</a></li>
+                <li><a href="#comunidade" class="nav-link" style="color: #f87171;">Comunidade</a></li>
+                <li><a href="#design" class="nav-link">Social Media</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
                 <li><a href="#web" class="nav-link" style="opacity: 0.85; font-size: 0.88rem;">Websites <span
                             style="font-size: 0.7rem; opacity: 0.7; font-weight: 400; padding: 2px 6px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-left: 2px;">Extra</span></a>
                 </li>
@@ -50,142 +52,36 @@
             </button>
         </div>
     </header>
-
-    <!-- ==================== BLOCO COMBINADO: INTRO + ARTES COM DEGRADÊ CONTÍNUO ==================== -->
-    <div class="hero-artes-combined">
-        <!-- BLOCO 1: INTRO / SOBRE GABRIEL -->
-        <section class="hero-intro" id="inicio" style="padding: 110px 0 15px;">
-            <div class="container" style="max-width: 900px; text-align: center; margin: 0 auto;">
-                <h1 class="hero-main-title">Gabriel Almeida</h1>
-                <p class="hero-main-subtitle">
-                    Designer Gráfico
-                </p>
-            </div>
-        </section>
-
-        <!-- BLOCO 2: DESIGNS (CARROSSEL DE ARTES) -->
-        <section class="design-section" id="design" style="padding: 10px 0 45px; background: transparent;">
-            <div class="container">
-                <div class="carousel-outer">
-                    <div class="carousel-viewport">
-                        <div class="carousel-track" id="designTrack">
-
-                            <!-- Cards gerados via JS dinamicamente no final para melhor organização -->
-
-                        </div>
-                    </div>
-
-                    <div class="carousel-dots" id="designDots"></div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ==================== BLOCO FERRAMENTAS QUE DOMINO ==================== -->
-    <section class="tools-section" style="padding: 10px 0 35px;">
-        <div class="container">
-            <div
-                style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 24px; text-align: center; max-width: 580px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);">
-                <p
-                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 14px;">
-                    Ferramentas que domino
-                </p>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
-
-                    <!-- Photoshop -->
-                    <div
-                        style="display: flex; align-items: center; gap: 12px; background: rgba(0, 30, 54, 0.5); border: 1px solid rgba(49, 168, 255, 0.3); border-radius: 12px; padding: 10px 20px;">
-                        <img src="../imagens/photoshop.png" alt="Photoshop"
-                            style="width: 36px; height: 36px; object-fit: contain;">
-                        <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">Photoshop</span>
-                    </div>
-
-                    <!-- Corel Draw -->
-                    <div
-                        style="display: flex; align-items: center; gap: 12px; background: rgba(21, 39, 24, 0.5); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 10px 20px;">
-                        <img src="../imagens/corel.png" alt="Corel Draw"
-                            style="width: 36px; height: 36px; object-fit: contain;">
-                        <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">Corel Draw</span>
-                    </div>
-
-                </div>
-            </div>
+    <!-- ==================== HERO / INTRODUÇÃO ==================== -->
+    <section class="hero-intro" id="inicio" style="padding: 110px 0 25px;">
+        <div class="container" style="max-width: 920px; text-align: center; margin: 0 auto;">
+            <h1 class="hero-main-title">Gabriel Almeida</h1>
+            <p class="hero-main-subtitle" style="font-size: 1.15rem; color: var(--accent-primary); font-weight: 600; margin-bottom: 12px;">
+                Criação de Vídeos, Edição de Alta Retenção & Gestão de Redes Sociais
+            </p>
+            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 20px; line-height: 1.6;">
+                Transformo ideias e perfis em conteúdo audiovisual magnético que prende a atenção nos primeiros segundos, fortalece sua autoridade e constrói comunidades ativas e engajadas.
+            </p>
         </div>
     </section>
-
-    <!-- ==================== BLOCO 3: FOTO MINHA + BADGES ==================== -->
-    <section class="profile-card-section" style="padding: 10px 0 50px;">
-        <div class="container" style="display: flex; justify-content: center;">
-            <div class="hero-card" style="padding: 26px 24px; max-width: 520px; width: 100%; text-align: center;">
-                <div class="hero-card-img"
-                    style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--accent-primary); margin: 0 auto 12px; overflow: hidden; box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);">
-                    <img src="../gabriel_avatar.jpg" alt="Gabriel Almeida"
-                        style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <h3 style="font-size: 1.35rem; margin-bottom: 2px; color: #fff;">Gabriel Almeida</h3>
-                <p
-                    style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
-                    <i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--accent-primary);"></i>
-                    Boa Vista, Roraima
-                </p>
-
-                <p
-                    style="font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 auto 22px; max-width: 450px; text-align: center;">
-                    Faço criações com o computador desde os 10 anos de idade, já trabalhei com centenas de clientes,
-                    projetos... Gosto de artes limpas, minimalistas e que façam sentido com a mensagem que o cliente
-                    quer passar.
-                </p>
-
-                <!-- Cards de estatísticas com hierarquia clara -->
-                <div class="hero-stats"
-                    style="padding-top: 18px; border-top: 1px solid var(--border-color); display: grid; grid-template-columns: 1.35fr 0.85fr 0.85fr; gap: 10px; align-items: stretch; text-align: center;">
-                    <!-- Card 1: Destaque Principal -->
-                    <div class="stat-item stat-featured"
-                        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.2) 100%); border: 1.5px solid var(--accent-primary); border-radius: 12px; padding: 12px 6px; box-shadow: 0 4px 18px rgba(99, 102, 241, 0.25); display: flex; flex-direction: column; justify-content: center;">
-                        <h4 style="font-size: 1.35rem; color: #fff; font-weight: 800; line-height: 1.1;">10+ Anos</h4>
-                        <p style="font-size: 0.78rem; color: #fff; font-weight: 700; margin: 2px 0;">Designer Gráfico
-                        </p>
-                        <span style="font-size: 0.65rem; color: #34d399; font-weight: 700; letter-spacing: 0.02em;">★
-                            FOCO PRINCIPAL</span>
-                    </div>
-
-                    <!-- Card 2: Secundário / Extra -->
-                    <div class="stat-item"
-                        style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px; opacity: 0.8; display: flex; flex-direction: column; justify-content: center;">
-                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+
-                            Anos</h4>
-                        <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Edição de Vídeo</p>
-                        <span style="font-size: 0.6rem; color: var(--text-dark); display: block;">Serviço Extra</span>
-                    </div>
-
-                    <!-- Card 3: Secundário / Extra -->
-                    <div class="stat-item"
-                        style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px; opacity: 0.8; display: flex; flex-direction: column; justify-content: center;">
-                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+
-                            Anos</h4>
-                        <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Criação de Sites</p>
-                        <span style="font-size: 0.6rem; color: var(--text-dark); display: block;">Serviço Extra</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== PORTFOLIO: VIDEOS ==================== -->
+<!-- ==================== PORTFOLIO: VIDEOS ==================== -->
     <section class="videos-section" id="videos">
         <div class="container">
             <div class="section-header" style="margin-bottom: 24px;">
                 <div class="badge"
                     style="background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: rgba(255,255,255,0.12);">
-                    Outras áreas que domino
+                    Portfólio Audiovisual Principal
                 </div>
                 <h2>Edição de Vídeos</h2>
                 <p style="font-size: 0.88rem; color: var(--text-muted);">
-                    Arraste para o lado para ver mais vídeos
+                    Cortes virais com hooks magnéticos, vídeos para YouTube e comerciais de alto impacto.
                 </p>
             </div>
 
             <div class="carousel-outer">
+                <button class="nav-btn nav-btn-prev" id="videoPrev" aria-label="Vídeo Anterior">
+                    <i data-lucide="chevron-left"></i>
+                </button>
                 <div class="carousel-viewport">
                     <div class="carousel-track" id="videoTrack">
 
@@ -310,8 +206,206 @@
 
                     </div>
                 </div>
+                <button class="nav-btn nav-btn-next" id="videoNext" aria-label="Próximo Vídeo">
+                    <i data-lucide="chevron-right"></i>
+                </button>
 
                 <div class="carousel-dots" id="videoDots"></div>
+            </div>
+        </div>
+    </section>
+
+        <!-- ==================== CASE DE SUCESSO: COMUNIDADE ONLINE DE VIOLÃO ==================== -->
+    <section class="community-section" id="comunidade">
+        <div class="container">
+            <div class="community-card-main">
+                <div class="community-grid">
+                    <div class="community-info">
+                        <div class="badge badge-community" style="margin-bottom: 16px;">
+                            <i data-lucide="award"></i> Case Real de Comunidade & Criação
+                        </div>
+                        <h2>Comunidade Violão Depois dos 40</h2>
+                        <p>
+                            Não falo apenas de teoria: criei, gerencio e escalo minha própria comunidade online. Produzo conteúdo autoral, gravo, edito e construo um ambiente diário de aprendizado e retenção de alunos.
+                        </p>
+
+                        <div class="community-stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-icon"><i data-lucide="youtube"></i></div>
+                                <span class="stat-number">+2.000</span>
+                                <span class="stat-label">Inscritos no YouTube com público nichado e engajado</span>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon"><i data-lucide="video"></i></div>
+                                <span class="stat-number">Seg a Sex</span>
+                                <span class="stat-label">Videochamadas e encontros ao vivo diários com alunos</span>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon"><i data-lucide="clapperboard"></i></div>
+                                <span class="stat-number">Gravação & Edição</span>
+                                <span class="stat-label">Produção contínua de aulas, performances e cortes virais</span>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon"><i data-lucide="heart-handshake"></i></div>
+                                <span class="stat-number">Comunidade</span>
+                                <span class="stat-label">Engajamento diário, suporte próximo e mentoria ativa</span>
+                            </div>
+                        </div>
+
+                        <ul class="community-highlights-list">
+                            <li>
+                                <i data-lucide="check-circle"></i>
+                                <span><strong>Autoridade na Prática:</strong> Experiência real com gravação de câmera, microfones, iluminação e roteiros.</span>
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle"></i>
+                                <span><strong>Fidelização & Retenção:</strong> Criação de rituais e acompanhamento ao vivo de segunda a sexta que mantêm membros ativos.</span>
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle"></i>
+                                <span><strong>Distribuição Multicanal:</strong> Adaptação do mesmo conteúdo para YouTube longo, Shorts, Reels e comunidade fechada.</span>
+                            </li>
+                        </ul>
+
+                        <a href="https://wa.me/5595984383225?text=Olá%20Gabriel,%20vi%20seu%20case%20da%20Comunidade%20de%20Violão%20e%20gostaria%20de%20um%20projeto%20similar%20para%20minha%20marca."
+                            target="_blank" class="btn btn-primary" style="padding: 12px 28px;">
+                            <i data-lucide="sparkles"></i> Quero um projeto para minha marca
+                        </a>
+                    </div>
+
+                    <div class="community-media-container">
+                        <div class="community-video-card">
+                            <video src="../videos/Comunidade Violao Depois dos 40.mp4" controls preload="none" muted
+                                playsinline></video>
+                        </div>
+                        <div class="community-media-caption">
+                            <i data-lucide="play-circle"></i> Prévia de corte da Comunidade Violão Depois dos 40
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==================== PORTFOLIO: SOCIAL MEDIA & DESIGN ==================== -->
+    <section class="design-section" id="design" style="padding: 60px 0 45px;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 28px;">
+                <div class="badge" style="margin-bottom: 10px;">Social Media & Identidade Visual</div>
+                <h2>Design Estratégico para Redes Sociais</h2>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">
+                    Capas de Reels (Cecília) de alta conversão, carrosséis, stories, figurinhas virais e materiais de engajamento.
+                </p>
+            </div>
+
+        
+            
+                <div class="carousel-outer">
+                    <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Arte Anterior">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="designTrack">
+
+                            <!-- Cards gerados via JS dinamicamente no final para melhor organização -->
+
+                        </div>
+                    </div>
+                    <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próxima Arte">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+
+                    <div class="carousel-dots" id="designDots"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== BLOCO FERRAMENTAS QUE DOMINO ==================== -->
+    <section class="tools-section" style="padding: 10px 0 35px;">
+        <div class="container">
+            <div
+                style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 24px; text-align: center; max-width: 580px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);">
+                <p
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700; margin-bottom: 14px;">
+                    Ferramentas que domino
+                </p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+
+                    <!-- Photoshop -->
+                    <div
+                        style="display: flex; align-items: center; gap: 12px; background: rgba(0, 30, 54, 0.5); border: 1px solid rgba(49, 168, 255, 0.3); border-radius: 12px; padding: 10px 20px;">
+                        <img src="../imagens/photoshop.png" alt="Photoshop"
+                            style="width: 36px; height: 36px; object-fit: contain;">
+                        <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">Photoshop</span>
+                    </div>
+
+                    <!-- Corel Draw -->
+                    <div
+                        style="display: flex; align-items: center; gap: 12px; background: rgba(21, 39, 24, 0.5); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 12px; padding: 10px 20px;">
+                        <img src="../imagens/corel.png" alt="Corel Draw"
+                            style="width: 36px; height: 36px; object-fit: contain;">
+                        <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">Corel Draw</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== BLOCO 3: FOTO MINHA + BADGES ==================== -->
+    <section class="profile-card-section" style="padding: 10px 0 50px;">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="hero-card" style="padding: 26px 24px; max-width: 520px; width: 100%; text-align: center;">
+                <div class="hero-card-img"
+                    style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--accent-primary); margin: 0 auto 12px; overflow: hidden; box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);">
+                    <img src="../gabriel_avatar.jpg" alt="Gabriel Almeida"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="font-size: 1.35rem; margin-bottom: 2px; color: #fff;">Gabriel Almeida</h3>
+                <p
+                    style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;">
+                    <i data-lucide="map-pin" style="width: 15px; height: 15px; color: var(--accent-primary);"></i>
+                    Boa Vista, Roraima
+                </p>
+
+                <p
+                    style="font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6; margin: 0 auto 22px; max-width: 450px; text-align: center;">
+                    Faço criações com o computador desde os 10 anos de idade, já trabalhei com centenas de clientes,
+                    projetos... Gosto de artes limpas, minimalistas e que façam sentido com a mensagem que o cliente
+                    quer passar.
+                </p>
+
+                <!-- Cards de estatísticas com hierarquia clara -->
+                <div class="hero-stats"
+                    style="padding-top: 18px; border-top: 1px solid var(--border-color); display: grid; grid-template-columns: 1.35fr 0.85fr 0.85fr; gap: 10px; align-items: stretch; text-align: center;">
+                    <!-- Card 1: Destaque Principal -->
+                    <div class="stat-item stat-featured"
+                        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.2) 100%); border: 1.5px solid var(--accent-primary); border-radius: 12px; padding: 12px 6px; box-shadow: 0 4px 18px rgba(99, 102, 241, 0.25); display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 1.35rem; color: #fff; font-weight: 800; line-height: 1.1;">10+ Anos</h4>
+                        <p style="font-size: 0.78rem; color: #fff; font-weight: 700; margin: 2px 0;">Designer Gráfico
+                        </p>
+                        <span style="font-size: 0.65rem; color: #34d399; font-weight: 700; letter-spacing: 0.02em;">★
+                            FOCO PRINCIPAL</span>
+                    </div>
+
+                    <!-- Card 2: Secundário / Extra -->
+                    <div class="stat-item"
+                        style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px; opacity: 0.8; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+
+                            Anos</h4>
+                        <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Edição de Vídeo</p>
+                        <span style="font-size: 0.6rem; color: var(--text-dark); display: block;">Serviço Extra</span>
+                    </div>
+
+                    <!-- Card 3: Secundário / Extra -->
+                    <div class="stat-item"
+                        style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px; opacity: 0.8; display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+
+                            Anos</h4>
+                        <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Criação de Sites</p>
+                        <span style="font-size: 0.6rem; color: var(--text-dark); display: block;">Serviço Extra</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -675,6 +769,23 @@
             return 3;
         }
 
+        if (designPrev && designNext) {
+            designPrev.addEventListener('click', () => {
+                if (activeDesignIndex > 0) {
+                    activeDesignIndex--;
+                    updateDesignCarouselState();
+                }
+            });
+            designNext.addEventListener('click', () => {
+                const visible = getVisibleDesignsCount();
+                const maxIdx = Math.max(0, totalDesigns - visible);
+                if (activeDesignIndex < maxIdx) {
+                    activeDesignIndex++;
+                    updateDesignCarouselState();
+                }
+            });
+        }
+
         function buildDesignDots() {
             designDotsContainer.innerHTML = '';
             const visible = getVisibleDesignsCount();
@@ -799,6 +910,17 @@
         function goToVideoSlide(index) {
             activeVideoIndex = (index + totalVideos) % totalVideos;
             updateVideoCarouselState();
+        }
+
+        const videoPrev = document.getElementById('videoPrev');
+        const videoNext = document.getElementById('videoNext');
+        if (videoPrev && videoNext) {
+            videoPrev.addEventListener('click', () => {
+                goToVideoSlide(activeVideoIndex - 1);
+            });
+            videoNext.addEventListener('click', () => {
+                goToVideoSlide(activeVideoIndex + 1);
+            });
         }
 
         // Touch Swipe para o carrossel de vídeos (com proteção de zoom)
