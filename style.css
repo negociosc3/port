@@ -1117,7 +1117,6 @@ footer {
 html.modal-open,
 body.modal-open {
     overflow: hidden !important;
-    height: 100% !important;
 }
 
 /* ----------------------------------------------------
@@ -1567,12 +1566,5 @@ body.modal-open {
 
     .section-header {
         margin-bottom: 20px;
-    }
-}
-
-/* Esconder botões de navegação lateral em celulares e tablets (apenas no computador) */
-@media (max-width: 1024px) {
-    .nav-btn {
-        display: none !important;
     }
 }

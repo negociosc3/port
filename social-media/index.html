@@ -26,9 +26,11 @@
 
     <!-- ==================== HEADER ==================== -->
     <header id="header">
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <div class="logo-badge">GA</div>
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">
+                    <img src="../gabriel_avatar.jpg" alt="Gabriel Almeida">
+                </div>
                 <div class="logo-text">
                     <h3>Gabriel Almeida</h3>
                     <p>Social Media</p>
@@ -36,12 +38,11 @@
             </a>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#videos" class="nav-link active" style="font-weight: 700; color: #fff;">Vídeos (Principal)</a></li>
-                <li><a href="#design" class="nav-link">Artes / Social Media</a></li>
-                <li><a href="#comunidade" class="nav-link" style="color: #f87171;">Comunidade</a></li>
+                <li><a href="#videos" class="nav-link active">Vídeos</a></li>
+                <li><a href="#design" class="nav-link">Artes</a></li>
+                <li><a href="#comunidade" class="nav-link" >Comunidade</a></li>
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                <li><a href="#web" class="nav-link" style="opacity: 0.85; font-size: 0.88rem;">Websites <span
-                            style="font-size: 0.7rem; opacity: 0.7; font-weight: 400; padding: 2px 6px; background: rgba(255,255,255,0.08); border-radius: 4px; margin-left: 2px;">Extra</span></a>
+                <li><a href="#web" class="nav-link">Websites</a>
                 </li>
                 <li><a href="#contato" class="btn btn-secondary"
                         style="padding: 8px 16px; border-radius: 10px;">Contato</a></li>
@@ -66,16 +67,7 @@
 <!-- ==================== PORTFOLIO: VIDEOS ==================== -->
     <section class="videos-section" id="videos">
         <div class="container">
-            <div class="section-header" style="margin-bottom: 24px;">
-                <div class="badge"
-                    style="background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: rgba(255,255,255,0.12);">
-                    Portfólio Audiovisual Principal
-                </div>
-                <h2>Edição de Vídeos</h2>
-                <p style="font-size: 0.88rem; color: var(--text-muted);">
-                    Cortes virais com hooks magnéticos, vídeos para YouTube e comerciais de alto impacto.
-                </p>
-            </div>
+            
 
             <div class="carousel-outer">
                 <button class="nav-btn nav-btn-prev" id="videoPrev" aria-label="Vídeo Anterior">
@@ -226,7 +218,7 @@
                     <!-- DaVinci Resolve -->
                     <div
                         style="display: flex; align-items: center; gap: 12px; background: rgba(0, 30, 54, 0.5); border: 1px solid rgba(49, 168, 255, 0.3); border-radius: 12px; padding: 10px 20px;">
-                        <img src="../imagens/davinci.png" alt="DaVinci Resolve"
+                        <img src="../davinci.webp" alt="DaVinci Resolve"
                             style="width: 36px; height: 36px; object-fit: contain;">
                         <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">DaVinci Resolve</span>
                     </div>
@@ -234,7 +226,7 @@
                     <!-- CapCut -->
                     <div
                         style="display: flex; align-items: center; gap: 12px; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 12px; padding: 10px 20px;">
-                        <img src="../imagens/capcut.png" alt="CapCut"
+                        <img src="../capcut.webp" alt="CapCut"
                             style="width: 36px; height: 36px; object-fit: contain;">
                         <span style="font-size: 1.05rem; color: #fff; font-weight: 700;">CapCut</span>
                     </div>
@@ -264,119 +256,133 @@
                     Gosto muito da área do audiovisual. Acompanho séries, filmes, então tenho muitas referências do que é algo bom. Sei o que é ter bom gosto na criação de conteúdo.
                 </p>
 
-                <!-- Cards de estatísticas com hierarquia e destaque em Edição de Vídeo -->
-                <div class="hero-stats-video">
-                    <div class="stat-highlight-main">
-                        <span class="num">6+ anos</span>
-                        <span class="label">de Edição de Vídeo & Audiovisual</span>
+                <!-- Cards de estatsticas com hierarquia clara -->
+                <div class="hero-stats"
+                    style="padding-top: 18px; border-top: 1px solid var(--border-color); display: grid; grid-template-columns: 1.35fr 0.85fr 0.85fr; gap: 10px; align-items: stretch; text-align: center;">
+                    
+                    <!-- Card 1: Destaque Principal -->
+                    <div class="stat-item stat-featured"
+                        style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.2) 100%); border: 1.5px solid var(--accent-primary); border-radius: 12px; padding: 12px 6px; box-shadow: 0 4px 18px rgba(99, 102, 241, 0.25); display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 1.35rem; color: #fff; font-weight: 800; line-height: 1.1;">6+ Anos</h4>
+                        <p style="font-size: 0.78rem; color: #fff; font-weight: 700; margin: 2px 0;">Audiovisual & Edição de Vídeo</p>
+                        <span style="font-size: 0.65rem; color: #34d399; font-weight: 700; letter-spacing: 0.02em;">FOCO PRINCIPAL</span>
                     </div>
-                    <div class="stat-card-clean">
-                        <span class="num">+100</span>
-                        <span class="label">Projetos Entregues</span>
+
+                    <!-- Card 2: Secundrio / Extra -->
+                    <div class="stat-item"
+                        style="background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px;  display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">10+ Anos</h4>
+                          <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Designer Gráfico</p>
                     </div>
-                    <div class="stat-card-clean">
-                        <span class="num">100%</span>
-                        <span class="label">Foco em Retenção</span>
+
+                    <!-- Card 3: Secundrio / Extra -->
+                    <div class="stat-item"
+                        style="background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-color); border-radius: 12px; padding: 10px 4px;  display: flex; flex-direction: column; justify-content: center;">
+                        <h4 style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600; line-height: 1.1;">6+ Anos</h4>
+                          <p style="font-size: 0.68rem; color: var(--text-muted); margin: 2px 0;">Criação de Sites</p>
                     </div>
+
                 </div>
-            </div>
         </div>
     </section>
+    
     <!-- ==================== PORTFOLIO: DESIGN PARA REDES SOCIAIS ==================== -->
     <section class="design-section" id="design" style="padding: 40px 0 45px; background: transparent;">
         <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 24px;">
+            <div class="section-header" style="margin-bottom: 24px;">
                 <h2>Design Estratégico para Redes Sociais</h2>
             </div>
 
-        
-            
-                <div class="carousel-outer">
-                    <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Arte Anterior">
-                        <i data-lucide="chevron-left"></i>
-                    </button>
-                    <div class="carousel-viewport">
-                        <div class="carousel-track" id="designTrack">
-
-                            <!-- Cards gerados via JS dinamicamente no final para melhor organização -->
-
-                        </div>
+            <div class="carousel-outer">
+                <button class="nav-btn nav-btn-prev" id="designPrev" aria-label="Arte Anterior">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="designTrack">
+                        <!-- Cards gerados via JS -->
                     </div>
-                    <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próxima Arte">
-                        <i data-lucide="chevron-right"></i>
-                    </button>
-
-                    <div class="carousel-dots" id="designDots"></div>
                 </div>
-            </div>
-        </section>
-    </div>
+                <button class="nav-btn nav-btn-next" id="designNext" aria-label="Próxima Arte">
+                    <i data-lucide="chevron-right"></i>
+                </button>
 
-        <!-- ==================== CASE DE SUCESSO: COMUNIDADE ONLINE DE VIOLÃO ==================== -->
+                <div class="carousel-dots" id="designDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CASE DE SUCESSO: COMUNIDADE ONLINE DE VIOLÃO ==================== -->
     <section class="community-section" id="comunidade">
         <div class="container">
             <div class="community-card-main">
                 <div style="text-align: center; margin-bottom: 28px;">
-                    <div class="badge badge-community" style="margin-bottom: 12px;">
-                        <i data-lucide="award"></i> Case de Sucesso
-                    </div>
-                    <h2>Comunidade Violão Depois dos 40</h2>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Comunidade Violão Depois dos 40</h2>
                 </div>
 
                 <!-- Duas imagens lado a lado na mesma linha -->
                 <div class="community-two-images-grid">
-                    <div class="img-card">
-                        <img src="../imagens/comunidade_vd40.png" alt="Comunidade VD 40" loading="lazy">
+                    <div class="img-card img-square">
+                        <img src="../comunidade vd40.png" alt="Comunidade VD 40" loading="lazy">
                     </div>
-                    <div class="img-card">
-                        <img src="../imagens/violao_depois_dos_40.png" alt="Violão Depois dos 40" loading="lazy">
-                    </div>
-                </div>
-
-                <!-- Vídeo em Looping -->
-                <div class="community-loop-video-container">
-                    <video src="../videos/video.mp4" autoplay loop muted playsinline></video>
-                </div>
-
-                <!-- Grid com 4 Bloquinhos de Métricas -->
-                <div class="community-stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-icon"><i data-lucide="youtube"></i></div>
-                        <span class="stat-number">+2.000</span>
-                        <span class="stat-label">Canal no YouTube com +2k inscritos</span>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-icon"><i data-lucide="clapperboard"></i></div>
-                        <span class="stat-number">Gravação & Edição</span>
-                        <span class="stat-label">Gravação e edição constante de vídeos</span>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-icon"><i data-lucide="users"></i></div>
-                        <span class="stat-number">Comunidade Ativa</span>
-                        <span class="stat-label">Comunidade de alunos pagantes</span>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-icon"><i data-lucide="calendar"></i></div>
-                        <span class="stat-number">Seg a Sex</span>
-                        <span class="stat-label">Videochamadas e encontros diários</span>
+                    <div class="img-card img-rect">
+                        <img src="../violaodepoisdos40.png" alt="Violão Depois dos 40" loading="lazy">
                     </div>
                 </div>
 
-                <!-- Texto Resumo -->
-                <p class="community-summary-text">
-                    Aplico diariamente a criação, gravação e edição de conteúdo aliada à retenção e gestão contínua de alunos em uma comunidade ativa com encontros ao vivo todos os dias.
-                </p>
+                <!-- Duas colunas: Informações e Vídeo -->
+                <div class="community-content-grid">
+                    <div class="community-info-left">
+                        <div class="community-stats-list">
+                            <div class="stat-box-row">
+                                <div class="stat-icon"><svg width="32px" height="32px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><defs><style>.cls-1{fill:none;}</style></defs><title>logo--youtube</title><path d="M29.41,9.26a3.5,3.5,0,0,0-2.47-2.47C24.76,6.2,16,6.2,16,6.2s-8.76,0-10.94.59A3.5,3.5,0,0,0,2.59,9.26,36.13,36.13,0,0,0,2,16a36.13,36.13,0,0,0,.59,6.74,3.5,3.5,0,0,0,2.47,2.47C7.24,25.8,16,25.8,16,25.8s8.76,0,10.94-.59a3.5,3.5,0,0,0,2.47-2.47A36.13,36.13,0,0,0,30,16,36.13,36.13,0,0,0,29.41,9.26ZM13.2,20.2V11.8L20.47,16Z"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg></div>
+                                <div>
+                                    <span class="stat-number">+2.000 inscritos</span>
+                                    <span class="stat-label">Canal ativo no YouTube</span>
+                                </div>
+                            </div>
+                            <div class="stat-box-row">
+                                <div class="stat-icon"><i data-lucide="clapperboard"></i></div>
+                                <div>
+                                    <span class="stat-number">Gravação & Edição</span>
+                                    <span class="stat-label">Produção constante de conteúdo</span>
+                                </div>
+                            </div>
+                            <div class="stat-box-row">
+                                <div class="stat-icon"><i data-lucide="users"></i></div>
+                                <div>
+                                    <span class="stat-number">Alunos Pagantes</span>
+                                    <span class="stat-label">Comunidade engajada e ativa</span>
+                                </div>
+                            </div>
+                            <div class="stat-box-row">
+                                <div class="stat-icon"><i data-lucide="calendar"></i></div>
+                                <div>
+                                    <span class="stat-number">Segunda a Sexta</span>
+                                    <span class="stat-label">Videochamadas às 20h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="community-summary-text">
+                            Desenvolvimento da estratégia de marketing, tráfego pago, atendimento, vendas, criação e edição dos vídeos e gestão do canal no YouTube.
+                        </p>
+                    </div>
+                    <div class="community-video-right">
+                        <div class="community-loop-video-container">
+                            <video src="../video.mp4" autoplay loop muted playsinline></video>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-<!-- ==================== PORTFOLIO: WEBSITES (SERVIÇO COMPLEMENTAR) ==================== -->
+
+    <!-- ==================== WEBSITES ==================== -->
     <section class="web-section" id="web">
         <div class="container">
-            <div class="section-header" style="margin-bottom: 24px;">
+            <div class="section-header">
+                <div class="badge" style="background: rgba(255,255,255,0.06); color: var(--text-muted); border-color: rgba(255,255,255,0.12);">Extra</div>
                 <h2>Criação de Sites</h2>
-                <p style="font-size: 0.88rem; color: var(--text-muted);">
-                    Sistemas responsivos focados em carregamento rápido, estética moderna e alta conversão.
-                </p>
+                <p>Desenvolvimento de Landing Pages, Portfólios e Sites Institucionais modernos e focados em performance.</p>
             </div>
 
             <div class="web-grid">
@@ -422,13 +428,13 @@
     </section>
 
     <!-- ==================== CONTACT ==================== -->
+
     <section class="contact" id="contato">
         <div class="container">
             <div class="contact-card">
                 <div class="contact-glow"></div>
                 <h2>Vamos trabalhar juntos?</h2>
-                <p>Estou pronto para criar designs de alto impacto para sua marca ou empresa, além de oferecer serviços
-                    adicionais de edição de vídeo e desenvolvimento web.</p>
+                <p>Estou pronto para ajudar a sua marca ou empresa a ter uma presença sólida no digital.</p>
 
                 <div class="contact-actions">
                     <a href="https://wa.me/5595984383225?text=Olá%20Gabriel,%20vi%20seu%20portfólio%20e%20gostaria%20de%20um%20orçamento."
@@ -492,6 +498,8 @@
     <!-- Lightbox de Design Gráfico & Prints de Sites -->
     <div class="modal-overlay" id="designLightbox">
         <button class="modal-close-btn" onclick="closeLightbox()"><i data-lucide="x"></i></button>
+        <button class="lightbox-nav-btn nav-btn-prev" onclick="prevLightboxImage(event)"><i data-lucide="chevron-left"></i></button>
+        <button class="lightbox-nav-btn nav-btn-next" onclick="nextLightboxImage(event)"><i data-lucide="chevron-right"></i></button>
         <div class="lightbox-main-container">
             <div class="lightbox-view-area" id="lightboxViewArea">
                 <div class="lightbox-image-wrapper" id="lightboxImageWrapper">
@@ -514,34 +522,25 @@
     <script>
         // Projetos de Design Gráfico Agrupados (Reordenados conforme solicitação)
         const projects = [
-            // 1. LOGOS NO INÍCIO
-            {
-                title: "Criação de Logotipo — Aura Divina",
-                tag: "Branding / Logotipos",
-                desc: "Logo minimalista desenhado com formas suaves de borboleta e tipografia refinada para e-commerce de moda feminina.",
-                images: ["../imagens/2026-03-12_21-05-10_UTC.jpg"]
-            },
-            {
+        {
                 title: "Criação de Logotipo — MR Formaturas",
                 tag: "Branding / Logotipos",
                 desc: "Identidade visual corporativa elegante combinando elementos dourados, chapéu de formatura e louros da vitória.",
                 images: ["../imagens/2026-03-12_20-32-26_UTC.jpg"]
             },
-            {
+        {
+                title: "Divulgação de Podcast — Roberta Acioly",
+                tag: "Marketing Político / Story",
+                desc: "Design de Story em formato vertical (9:16) desenvolvido para a divulgação do Podcast Orgulho de ser UERR com a participação da senadora Roberta Acioly.",
+                images: ["../imagens/capa podcast UERR story  (4).png"]
+            },
+        {
                 title: "Criação de Logotipo — Doce Açaí",
                 tag: "Branding / Logotipos",
                 desc: "Design divertido de logotipo criado para uma gelateria gourmet com traços coloridos e visual atraente.",
                 images: ["../imagens/2026-02-28_21-00-31_UTC.jpg"]
             },
-            {
-                title: "Identidade Visual — Aluno Ouro 2025",
-                tag: "Branding / Eventos",
-                desc: "Marca oficial e selo tridimensional dourado desenvolvidos para premiação escolar anual.",
-                images: ["../imagens/2026-02-28_20-59-21_UTC.jpg"]
-            },
-
-            // 2. CAMPANHA CARROSSEL COMO SEGUNDO
-            {
+        {
                 title: "Campanha de Carrossel — Regina 300",
                 tag: "Marketing Político / Feed",
                 desc: "Design de carrossel informativo criado para redes sociais na campanha para o Senado da candidata Regina 300.",
@@ -551,17 +550,13 @@
                     "../imagens/2026-08-17_13-21-26_UTC_7.jpg"
                 ]
             },
-
-            // 3. DIVULGAÇÃO DO PODCAST
-            {
-                title: "Divulgação de Podcast — Roberta Acioly",
-                tag: "Marketing Político / Story",
-                desc: "Design de Story em formato vertical (9:16) desenvolvido para a divulgação do Podcast Orgulho de ser UERR com a participação da senadora Roberta Acioly.",
-                images: ["../imagens/capa podcast UERR story  (4).png"]
+        {
+                title: "Criação de Logotipo — Aura Divina",
+                tag: "Branding / Logotipos",
+                desc: "Logo minimalista desenhado com formas suaves de borboleta e tipografia refinada para e-commerce de moda feminina.",
+                images: ["../imagens/2026-03-12_21-05-10_UTC.jpg"]
             },
-
-            // 4. CAPAS REELS
-            {
+        {
                 title: "Identidade de Conteúdo — Reels Cecília",
                 tag: "Social Media / Reels",
                 desc: "Coleção de capas minimalistas e refinadas para vídeos de Reels da Cecília, apresentando alta consistência visual, tipografia expressiva e contraste tonal.",
@@ -576,27 +571,19 @@
                     "../imagens/capa cec 11.png"
                 ]
             },
-
-            // DEMAIS PROJETOS
-            {
+        {
+                title: "Identidade Visual — Aluno Ouro 2025",
+                tag: "Branding / Eventos",
+                desc: "Marca oficial e selo tridimensional dourado desenvolvidos para premiação escolar anual.",
+                images: ["../imagens/2026-02-28_20-59-21_UTC.jpg"]
+            },
+        {
                 title: "Figurinhas de WhatsApp — Regina 300",
                 tag: "Marketing Político / WhatsApp",
                 desc: "Conjunto de figurinhas (stickers) personalizadas e expressivas criadas para compartilhamento viral em grupos de WhatsApp na campanha para o Senado.",
                 images: ["../imagens/1.png"]
             },
-            {
-                title: "Campanha Conceitual — Roberta Acioly",
-                tag: "Marketing Político / Feed",
-                desc: "Post institucional para feed de redes sociais ('Minha missão é cuidar das pessoas') criado para a campanha da parlamentar Roberta Acioly.",
-                images: ["../imagens/sofa6 copy.png"]
-            },
-            {
-                title: "Mega Banner Eleitoral — Roberta Acioly",
-                tag: "Marketing Político / OOH",
-                desc: "Design de banner impresso de grande formato para campanhas eleitorais urbanas com foco em alta definição e legibilidade.",
-                images: ["../imagens/mega banner copy.png"]
-            },
-            {
+        {
                 title: "Retoque de Retratos e Tratamento de Pele",
                 tag: "Photoshop / Pós-Produção",
                 desc: "Trabalho detalhado de tratamento de imagem, luz, remoção de imperfeições da pele e pós-produção avançada em retratos corporativos no Photoshop.",
@@ -607,19 +594,31 @@
                     "../imagens/2026-03-12_21-07-33_UTC_2.jpg"
                 ]
             },
-            {
+        {
+                title: "Campanha Conceitual — Roberta Acioly",
+                tag: "Marketing Político / Feed",
+                desc: "Post institucional para feed de redes sociais ('Minha missão é cuidar das pessoas') criado para a campanha da parlamentar Roberta Acioly.",
+                images: ["../imagens/sofa6 copy.png"]
+            },
+        {
                 title: "Mockups de Estampas — VA Camiseteria",
                 tag: "Modelagem / Vestuário",
                 desc: "Apresentação e simulação tridimensional realista de designs de camisetas prontas para produção física.",
                 images: ["../imagens/2026-02-28_20-58-09_UTC.jpg"]
             },
-            {
+        {
+                title: "Mega Banner Eleitoral — Roberta Acioly",
+                tag: "Marketing Político / OOH",
+                desc: "Design de banner impresso de grande formato para campanhas eleitorais urbanas com foco em alta definição e legibilidade.",
+                images: ["../imagens/mega banner copy.png"]
+            },
+        {
                 title: "Capa de Carrossel de Instagram — Jaque Torres",
                 tag: "Social Media / Infoprodutos",
                 desc: "Design promocional e capa conceitual para carrossel de dicas de vendas de roupas online.",
                 images: ["../imagens/2026-02-28_20-13-40_UTC.jpg"]
             }
-        ];
+    ];
 
         // Inicializar Ícones Lucide
         lucide.createIcons();
@@ -993,12 +992,16 @@
             currentProjectIndex = null;
             currentLightboxProject = rjWebsiteData;
             openImgIdx = 0;
-            renderLightboxState();
-
+            
             const wasActive = designLightbox.classList.contains('active');
             designLightbox.classList.add('active');
             document.documentElement.classList.add('modal-open');
             document.body.classList.add('modal-open');
+            
+            // Render after the modal is visible to prevent layout glitches with scrollable containers
+            setTimeout(() => {
+                renderLightboxState();
+            }, 10);
 
             if (!wasActive) {
                 try {
@@ -1069,7 +1072,7 @@
         }
 
         // Navegação normal e fluida através das setas nativas
-        function nextLightboxImage() {
+        function nextLightboxImage(e) { if(e) e.stopPropagation();
             if (!currentLightboxProject) return;
             const project = currentLightboxProject;
             const total = Array.isArray(project.items) ? project.items.length : project.images.length;
@@ -1090,7 +1093,7 @@
             }
         }
 
-        function prevLightboxImage() {
+        function prevLightboxImage(e) { if(e) e.stopPropagation();
             if (!currentLightboxProject) return;
             const project = currentLightboxProject;
             const total = Array.isArray(project.items) ? project.items.length : project.images.length;
